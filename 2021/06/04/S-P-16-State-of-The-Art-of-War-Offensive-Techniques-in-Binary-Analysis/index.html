@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="AbstractFinding and exploiting vulnerabilities in binary code is a challenging task. The lack of high-level, semantically rich information about data structures and control constructs makes the analys">
+    <meta name="description" content="Abstract Finding and exploiting vulnerabilities in binary code is a challenging task. The lack of high-level, semantically rich information about data structures and control constructs makes the analy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[S&amp;P&#39;16] (State of) The Art of War: Offensive Techniques in Binary Analysis">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/06/04/S-P-16-State-of-The-Art-of-War-Offensive-Techniques-in-Binary-Analysis/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="AbstractFinding and exploiting vulnerabilities in binary code is a challenging task. The lack of high-level, semantically rich information about data structures and control constructs makes the analys">
+<meta property="og:description" content="Abstract Finding and exploiting vulnerabilities in binary code is a challenging task. The lack of high-level, semantically rich information about data structures and control constructs makes the analy">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-04T15:29:24.000Z">
 <meta property="article:modified_time" content="2024-03-27T05:21:36.077Z">
@@ -111,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline"><span class="nav-number">2.</span> <span class="nav-text">Outline</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outline"><span class="nav-number">2.</span> <span class="nav-text">Outline</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,12 +229,32 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Finding and exploiting vulnerabilities in binary code is a challenging task. The lack of high-level, semantically rich information about data structures and control constructs makes the analysis of program properties harder to scale. However, the importance of binary analysis is on the rise. In many situations binary analysis is the only possible way to prove (or disprove) properties about the code that is <em>actually</em> executed.</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="abstract">Abstract</h3>
+<p>Finding and exploiting vulnerabilities in binary code is a
+challenging task. The lack of high-level, semantically rich information
+about data structures and control constructs makes the analysis of
+program properties harder to scale. However, the importance of binary
+analysis is on the rise. In many situations binary analysis is the only
+possible way to prove (or disprove) properties about the code that is
+<em>actually</em> executed.</p>
 <span id="more"></span>
-
-<p>In this paper, we present a binary analysis framework that implements a number of analysis techniques that have been proposed in the past. We present a systematized implementation of these techniques, which allows other researchers to compose them and develop new approaches. In addition, the implementation of these techniques in a unifying framework allows for the direct comparison of these approaches and the identification of their advantages and disadvantages. The evaluation included in this paper is performed using a recent dataset created by DARPA for evaluating the effectiveness of binary vulnerability analysis techniques.</p>
-<p>Our framework has been open-sourced and is available to the security community.</p>
-<h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><p>Binary analysis is an import topic, however, many low level language provide few security guarantees.  Also, properties that were proven by analyzing the source code of a program may not hold after the very same program has been compiled</p>
+<p>In this paper, we present a binary analysis framework that implements
+a number of analysis techniques that have been proposed in the past. We
+present a systematized implementation of these techniques, which allows
+other researchers to compose them and develop new approaches. In
+addition, the implementation of these techniques in a unifying framework
+allows for the direct comparison of these approaches and the
+identification of their advantages and disadvantages. The evaluation
+included in this paper is performed using a recent dataset created by
+DARPA for evaluating the effectiveness of binary vulnerability analysis
+techniques.</p>
+<p>Our framework has been open-sourced and is available to the security
+community.</p>
+<h3 id="outline">Outline</h3>
+<p>Binary analysis is an import topic, however, many low level language
+provide few security guarantees. Also, properties that were proven by
+analyzing the source code of a program may not hold after the very same
+program has been compiled</p>
 <p>Binary Analysis technique suffers from two problems:</p>
 
     </div>

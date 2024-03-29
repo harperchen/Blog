@@ -226,12 +226,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-查看LLVM-IR"><a href="#1-查看LLVM-IR" class="headerlink" title="1. 查看LLVM IR"></a>1. 查看LLVM IR</h3><p>使用LLVM的编译流程：源码 -&gt; AST -&gt; LLVM IR (<code>.ll</code>)-&gt; LLVM Bitcode (<code>.bc</code>) -&gt; ASM -&gt; Native</p>
+          <h3 id="查看llvm-ir">1. 查看LLVM IR</h3>
+<p>使用LLVM的编译流程：源码 -&gt; AST -&gt; LLVM IR
+(<code>.ll</code>)-&gt; LLVM Bitcode (<code>.bc</code>) -&gt; ASM -&gt;
+Native</p>
 <ul>
-<li><code>llvm-as</code>：把LLVM IR从人类能看懂的文本格式汇编成二进制格式。注意：此处得到的<strong>不是</strong>目标平台的机器码。</li>
-<li><code>llvm-dis</code>：<code>llvm-as</code>的逆过程，即反汇编。 不过这里的反汇编的对象是LLVM IR的二进制格式，而不是机器码。</li>
+<li><code>llvm-as</code>：把LLVM
+IR从人类能看懂的文本格式汇编成二进制格式。注意：此处得到的<strong>不是</strong>目标平台的机器码。</li>
+<li><code>llvm-dis</code>：<code>llvm-as</code>的逆过程，即反汇编。
+不过这里的反汇编的对象是LLVM IR的二进制格式，而不是机器码。</li>
 <li><code>opt</code>：优化LLVM IR。输出新的LLVM IR。</li>
-<li><code>llc</code>：把LLVM IR编译成汇编码。需要用<code>as</code>进一步得到机器码。</li>
+<li><code>llc</code>：把LLVM
+IR编译成汇编码。需要用<code>as</code>进一步得到机器码。</li>
 <li><code>lli</code>：解释执行LLVM IR</li>
 </ul>
           <!--noindex-->
@@ -316,7 +322,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-Maple-IR前端"><a href="#1-Maple-IR前端" class="headerlink" title="1. Maple IR前端"></a>1. Maple IR前端</h4><p>Maple IR是方舟编译器的中间表示语言，设计原则是尽可能多的保留源文件的信息，其中信息包括声明部分（符号表）和代码部分。Maple IR是平台无关的，不依赖任何处理器。Maple IR也有配套的Maple VM，可以直接运行Maple IR。可以利用不同的前端将C&#x2F;C++，Java等不同的语言转化成Maple IR，也可以扩展支持别的语言。</p>
+          <h4 id="maple-ir前端">1. Maple IR前端</h4>
+<p>Maple
+IR是方舟编译器的中间表示语言，设计原则是尽可能多的保留源文件的信息，其中信息包括声明部分（符号表）和代码部分。Maple
+IR是平台无关的，不依赖任何处理器。Maple IR也有配套的Maple
+VM，可以直接运行Maple
+IR。可以利用不同的前端将C/C++，Java等不同的语言转化成Maple
+IR，也可以扩展支持别的语言。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/01/08/OpenArk-Compiler/#more" rel="contents">
@@ -399,7 +411,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-Maple-IR前端"><a href="#1-Maple-IR前端" class="headerlink" title="1. Maple IR前端"></a>1. Maple IR前端</h4><p>Maple IR是方舟编译器的中间表示语言，设计原则是尽可能多的保留源文件的信息，其中信息包括声明部分（符号表）和代码部分。Maple IR是平台无关的，不依赖任何处理器。Maple IR也有配套的Maple VM，可以直接运行Maple IR。可以利用不同的前端将C&#x2F;C++，Java等不同的语言转化成Maple IR，也可以扩展支持别的语言。</p>
+          <h4 id="maple-ir前端">1. Maple IR前端</h4>
+<p>Maple
+IR是方舟编译器的中间表示语言，设计原则是尽可能多的保留源文件的信息，其中信息包括声明部分（符号表）和代码部分。Maple
+IR是平台无关的，不依赖任何处理器。Maple IR也有配套的Maple
+VM，可以直接运行Maple
+IR。可以利用不同的前端将C/C++，Java等不同的语言转化成Maple
+IR，也可以扩展支持别的语言。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/01/08/Tech-OpenArk-Compiler/#more" rel="contents">
@@ -482,8 +500,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="TSAN"><a href="#TSAN" class="headerlink" title="TSAN"></a>TSAN</h3><p><a target="_blank" rel="noopener" href="https://github.com/google/sanitizers">https://github.com/google/sanitizers</a></p>
-<p><a target="_blank" rel="noopener" href="https://clang.llvm.org/docs/ThreadSafetyAnalysis.html">https://clang.llvm.org/docs/ThreadSafetyAnalysis.html</a></p>
+          <h3 id="tsan">TSAN</h3>
+<p>https://github.com/google/sanitizers</p>
+<p>https://clang.llvm.org/docs/ThreadSafetyAnalysis.html</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/30/Tech-Thread-Safety/#more" rel="contents">
@@ -566,8 +585,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="TSAN"><a href="#TSAN" class="headerlink" title="TSAN"></a>TSAN</h3><p><a target="_blank" rel="noopener" href="https://github.com/google/sanitizers">https://github.com/google/sanitizers</a></p>
-<p><a target="_blank" rel="noopener" href="https://clang.llvm.org/docs/ThreadSafetyAnalysis.html">https://clang.llvm.org/docs/ThreadSafetyAnalysis.html</a></p>
+          <h3 id="tsan">TSAN</h3>
+<p>https://github.com/google/sanitizers</p>
+<p>https://clang.llvm.org/docs/ThreadSafetyAnalysis.html</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/30/Thread-Safety/#more" rel="contents">
@@ -659,7 +679,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>File systems, a basic building block of an OS, are too big and too complex to be bug free. Nevertheless, file systems rely on regular stress-testing tools and formal checkers to find bugs, which are limited due to the ever-increasing complexity of both file systems and OSes. Thus, fuzzing, proven to be an effective and a practical approach, becomes a preferable choice, as it does not need much knowledge about a target. However, three main challenges exist in fuzzing file systems: mutating a large image blob that degrades overall performance, generating image-dependent file operations, and reproducing found bugs, which is difficult for existing OS fuzzers.</p>
+          <h4 id="abstract">Abstract</h4>
+<p>File systems, a basic building block of an OS, are too big and too
+complex to be bug free. Nevertheless, file systems rely on regular
+stress-testing tools and formal checkers to find bugs, which are limited
+due to the ever-increasing complexity of both file systems and OSes.
+Thus, fuzzing, proven to be an effective and a practical approach,
+becomes a preferable choice, as it does not need much knowledge about a
+target. However, three main challenges exist in fuzzing file systems:
+mutating a large image blob that degrades overall performance,
+generating image-dependent file operations, and reproducing found bugs,
+which is difficult for existing OS fuzzers.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/30/S-P-19-Fuzzing-File-Systems-via-Two-Dimensional-Input-Space-Exploration/#more" rel="contents">
@@ -751,7 +781,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Mobile systems, such as smartphones and tablets, incorporate a diverse set of I&#x2F;O devices, such as camera, audio devices, GPU, and sensors. This in turn results in a large number of diverse and customized device drivers running in the operating system kernel of mobile systems. These device drivers contain various bugs and vulnerabilities, making them a top target for kernel exploits. Unfortunately, security analysts face important challenges in analyzing these device drivers in order to find, understand, and patch vulnerabilities. More specifically, using the state-of-the-art dynamic analysis techniques such as interactive debugging, fuzzing, and record-and-replay for analysis of these drivers is difficult, inefficient, or even completely inaccessible depending on the analysis.</p>
+          <h4 id="abstract">Abstract</h4>
+<p>Mobile systems, such as smartphones and tablets, incorporate a
+diverse set of I/O devices, such as camera, audio devices, GPU, and
+sensors. This in turn results in a large number of diverse and
+customized device drivers running in the operating system kernel of
+mobile systems. These device drivers contain various bugs and
+vulnerabilities, making them a top target for kernel exploits.
+Unfortunately, security analysts face important challenges in analyzing
+these device drivers in order to find, understand, and patch
+vulnerabilities. More specifically, using the state-of-the-art dynamic
+analysis techniques such as interactive debugging, fuzzing, and
+record-and-replay for analysis of these drivers is difficult,
+inefficient, or even completely inaccessible depending on the
+analysis.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/29/USENIX-18-Charm-Facilitating-Dynamic-Analysis-of-Device-Drivers-of-Mobile-Systems/#more" rel="contents">
@@ -843,8 +886,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Linux内核、驱动程序和硬件的关系，从中可以看出，内核的几个模块，相应的系统调用也可以分为这几类 <a target="_blank" rel="noopener" href="http://seclab.cs.sunysb.edu/sekar/papers/syscallclassif.htm">http://seclab.cs.sunysb.edu/sekar/papers/syscallclassif.htm</a></p>
-<ol>
+          <p>Linux内核、驱动程序和硬件的关系，从中可以看出，内核的几个模块，相应的系统调用也可以分为这几类
+http://seclab.cs.sunysb.edu/sekar/papers/syscallclassif.htm</p>
+<ol type="1">
 <li>进程管理模块</li>
 <li>内存管理模块</li>
 <li>文件系统模块 file system</li>
@@ -942,7 +986,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>The ability to execute and analyze code makes many security tasks such as exploit development, reverse engineering, and vulnerability detection much easier. However, on embedded devices such as Android smartphones, executing code in-vivo, on the device, for analysis is limited by the need to acquire such devices, the speed of the device, and in some cases the need to flash custom code onto the devices. The other option is to execute the code ex-vivo, off the device, but this approach either requires porting or complex hardware emulation.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>The ability to execute and analyze code makes many security tasks
+such as exploit development, reverse engineering, and vulnerability
+detection much easier. However, on embedded devices such as Android
+smartphones, executing code in-vivo, on the device, for analysis is
+limited by the need to acquire such devices, the speed of the device,
+and in some cases the need to flash custom code onto the devices. The
+other option is to execute the code ex-vivo, off the device, but this
+approach either requires porting or complex hardware emulation.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/27/S-P-20-Ex-vivo-dynamic-analysis-framework-for-Android-device-drivers/#more" rel="contents">
@@ -1034,8 +1086,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-Race-Bug"><a href="#1-Race-Bug" class="headerlink" title="1. Race Bug"></a>1. Race Bug</h3><p>两个访问内存区域的线程，当下面三个条件同时满足时，即可认定是Race bug。</p>
-<ol>
+          <h3 id="race-bug">1. Race Bug</h3>
+<p>两个访问内存区域的线程，当下面三个条件同时满足时，即可认定是Race
+bug。</p>
+<ol type="1">
 <li>访问的内存区域地址相同</li>
 <li>其中一个内存访问是写操作</li>
 <li>两个线程的执行顺序是不受限制的</li>

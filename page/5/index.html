@@ -226,8 +226,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-Race-Bug"><a href="#1-Race-Bug" class="headerlink" title="1. Race Bug"></a>1. Race Bug</h3><p>两个访问内存区域的线程，当下面三个条件同时满足时，即可认定是Race bug。</p>
-<ol>
+          <h3 id="race-bug">1. Race Bug</h3>
+<p>两个访问内存区域的线程，当下面三个条件同时满足时，即可认定是Race
+bug。</p>
+<ol type="1">
 <li>访问的内存区域地址相同</li>
 <li>其中一个内存访问是写操作</li>
 <li>两个线程的执行顺序是不受限制的</li>
@@ -323,7 +325,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Data races occur when two threads fail to use proper synchronization when accessing shared data. In kernel file systems, which are highly concurrent by design, data races are common mistakes and often wreak havoc on the users, causing inconsistent states or data losses. Prior fuzzing practices on file systems have been effective in uncovering hundreds of bugs, but they mostly focus on the sequential aspect of file system execution and do not comprehensively explore the concurrency dimension and hence, forgo the opportunity to catch data races.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Data races occur when two threads fail to use proper synchronization
+when accessing shared data. In kernel file systems, which are highly
+concurrent by design, data races are common mistakes and often wreak
+havoc on the users, causing inconsistent states or data losses. Prior
+fuzzing practices on file systems have been effective in uncovering
+hundreds of bugs, but they mostly focus on the sequential aspect of file
+system execution and do not comprehensively explore the concurrency
+dimension and hence, forgo the opportunity to catch data races.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/24/S-P-20-KRACE-Data-Race-Fuzzing-for-Kernel-File-Systems/#more" rel="contents">
@@ -415,7 +425,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>A data race in a kernel is an important class of bugs, critically impacting the reliability and security of the associated system. As a result of a race, the kernel may become unresponsive. Even worse, an attacker may launch a privilege escalation attack to acquire root privileges.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>A data race in a kernel is an important class of bugs, critically
+impacting the reliability and security of the associated system. As a
+result of a race, the kernel may become unresponsive. Even worse, an
+attacker may launch a privilege escalation attack to acquire root
+privileges.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/24/S-P-19-RAZZER-Finding-Kernel-Race-Bugs-through-Fuzzing/#more" rel="contents">
@@ -507,7 +522,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Device drivers are an essential part in modern Unix-like systems to handle operations on physical devices, from hard disks and print- ers to digital cameras and Bluetooth speakers. The surge of new hardware, particularly on mobile devices, introduces an explosive growth of device drivers in system kernels. Many such drivers are provided by third-party developers, which are susceptible to se- curity vulnerabilities and lack proper vetting. Unfortunately, the complex input data structures for device drivers render traditional analysis tools, such as fuzz testing, less effective, and so far, research on kernel driver security is comparatively sparse.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Device drivers are an essential part in modern Unix-like systems to
+handle operations on physical devices, from hard disks and print- ers to
+digital cameras and Bluetooth speakers. The surge of new hardware,
+particularly on mobile devices, introduces an explosive growth of device
+drivers in system kernels. Many such drivers are provided by third-party
+developers, which are susceptible to se- curity vulnerabilities and lack
+proper vetting. Unfortunately, the complex input data structures for
+device drivers render traditional analysis tools, such as fuzz testing,
+less effective, and so far, research on kernel driver security is
+comparatively sparse.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/21/CCS-17-DIFUZE-Interface-Aware-Fuzzing-for-Kernel-Drivers/#more" rel="contents">
@@ -599,7 +624,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Discovering the security vulnerabilities of commercial off-the-shelf (COTS) operating systems (OSes) is chal- lenging because they not only are huge and complex, but also lack detailed debug information. Concolic testing, which generates all feasible inputs of a program by using symbolic execution and tests the program with the generated inputs, is one of the most promising approaches to solve this problem. Unfortunately, the state-of-the-art concolic testing tools do not scale well for testing COTS OSes because of state explosion. Indeed, they often fail to find a single bug (or crash) in COTS OSes despite their long execution time.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Discovering the security vulnerabilities of commercial off-the-shelf
+(COTS) operating systems (OSes) is chal- lenging because they not only
+are huge and complex, but also lack detailed debug information. Concolic
+testing, which generates all feasible inputs of a program by using
+symbolic execution and tests the program with the generated inputs, is
+one of the most promising approaches to solve this problem.
+Unfortunately, the state-of-the-art concolic testing tools do not scale
+well for testing COTS OSes because of state explosion. Indeed, they
+often fail to find a single bug (or crash) in COTS OSes despite their
+long execution time.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/20/USENIX-ATC-17-CAB-FUZZ-Practical-Concolic-Testing-Techniques-for-COTS-Operating-Systems/#more" rel="contents">
@@ -691,7 +726,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Many kinds of memory safety vulnerabilities have been endangering software systems for decades. Amongst other approaches, fuzzing is a promising technique to unveil various software faults. Recently, feedback-guided fuzzing demonstrated its power, pro- ducing a steady stream of security-critical software bugs. Most fuzzing efforts—especially feedback fuzzing—are limited to user space components of an operating system (OS), although bugs in kernel components are more severe, because they allow an attacker to gain access to a system with full privileges. Unfortunately, kernel components are difficult to fuzz as feedback mechanisms (i.e., guided code coverage) cannot be easily applied. Additionally, non-determinism due to interrupts, kernel threads, statefulness, and similar mechanisms poses problems. Furthermore, if a process fuzzes its own kernel, a kernel crash highly impacts the performance of the fuzzer as the OS needs to reboot.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Many kinds of memory safety vulnerabilities have been endangering
+software systems for decades. Amongst other approaches, fuzzing is a
+promising technique to unveil various software faults. Recently,
+feedback-guided fuzzing demonstrated its power, pro- ducing a steady
+stream of security-critical software bugs. Most fuzzing
+efforts—especially feedback fuzzing—are limited to user space components
+of an operating system (OS), although bugs in kernel components are more
+severe, because they allow an attacker to gain access to a system with
+full privileges. Unfortunately, kernel components are difficult to fuzz
+as feedback mechanisms (i.e., guided code coverage) cannot be easily
+applied. Additionally, non-determinism due to interrupts, kernel
+threads, statefulness, and similar mechanisms poses problems.
+Furthermore, if a process fuzzes its own kernel, a kernel crash highly
+impacts the performance of the fuzzer as the OS needs to reboot.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/12/18/USENIX-17-kAFL-Hardware-Assisted-Feedback-Fuzzing-for-OS-Kernels/#more" rel="contents">
@@ -783,14 +832,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Several-Cases"><a href="#Several-Cases" class="headerlink" title="Several Cases"></a>Several Cases</h4><p>The following cases are concluded by the inspection of summaries&#x2F;specifications generated by several tools.</p>
+          <h4 id="several-cases">Several Cases</h4>
+<p>The following cases are concluded by the inspection of
+summaries/specifications generated by several tools.</p>
 <ul>
 <li>Android and Java Summaries: StubDroid, Modelgen, Apposcopy</li>
 <li>Javascript Summaries: Taser</li>
 </ul>
-<ol>
+<ol type="1">
 <li><p><strong>How to decide Input and Output</strong></p>
-<p>Basically, the inputs and outputs of a method are not only the parameters and return values, especially for those methods that take function callback as parameters. </p>
+<p>Basically, the inputs and outputs of a method are not only the
+parameters and return values, especially for those methods that take
+function callback as parameters.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/30/Taint-Specifications/#more" rel="contents">
@@ -882,14 +935,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Several-Cases"><a href="#Several-Cases" class="headerlink" title="Several Cases"></a>Several Cases</h4><p>The following cases are concluded by the inspection of summaries&#x2F;specifications generated by several tools.</p>
+          <h4 id="several-cases">Several Cases</h4>
+<p>The following cases are concluded by the inspection of
+summaries/specifications generated by several tools.</p>
 <ul>
 <li>Android and Java Summaries: StubDroid, Modelgen, Apposcopy</li>
 <li>Javascript Summaries: Taser</li>
 </ul>
-<ol>
+<ol type="1">
 <li><p><strong>How to decide Input and Output</strong></p>
-<p>Basically, the inputs and outputs of a method are not only the parameters and return values, especially for those methods that take function callback as parameters. </p>
+<p>Basically, the inputs and outputs of a method are not only the
+parameters and return values, especially for those methods that take
+function callback as parameters.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/30/Tech-Taint-Specifications/#more" rel="contents">
@@ -972,7 +1029,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>I would like to debug the following C program using gdb to check how to set the memory content to run this program statically using BinCAT.</p>
+          <p>I would like to debug the following C program using gdb to check how
+to set the memory content to run this program statically using BinCAT.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/23/Gdb-Usage/#more" rel="contents">
@@ -1055,7 +1113,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>I would like to debug the following C program using gdb to check how to set the memory content to run this program statically using BinCAT.</p>
+          <p>I would like to debug the following C program using gdb to check how
+to set the memory content to run this program statically using BinCAT.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/23/Tech-Gdb-Debugging/#more" rel="contents">

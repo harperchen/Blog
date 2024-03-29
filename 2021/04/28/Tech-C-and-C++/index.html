@@ -226,19 +226,32 @@
 <p>CFI: Control flow integrity</p>
 <p>ROP: Return-oriented programming</p>
 <span id="more"></span>
-
 <p>Closed Source Memory Errors:</p>
-<ol>
-<li>Resort to blackbox fuzzing: resulting in shallow coverage close to the provided test cases</li>
-<li>Rely on dynamic binary translation: instrument the binary at prohibitively high runtime cost (e.g., 10x to 100x for AFL fuzzing in QEMU mode on LAVA-M)</li>
+<ol type="1">
+<li>Resort to blackbox fuzzing: resulting in shallow coverage close to
+the provided test cases</li>
+<li>Rely on dynamic binary translation: instrument the binary at
+prohibitively high runtime cost (e.g., 10x to 100x for AFL fuzzing in
+QEMU mode on LAVA-M)</li>
 <li>Use unsound static rewriting based on heuristics</li>
 </ol>
-<p>Question: The fundamental difficulty for static rewriting techniques is disambiguating reference and scalar constants</p>
+<p>Question: The fundamental difficulty for static rewriting techniques
+is disambiguating reference and scalar constants</p>
 <p>There are three fundamental techniques to rewrite binaries:</p>
-<ol>
-<li>recompilation [14], which attempts to lift the code to an intermediate representation; Lifting code to IR for recompilation requires correctly recovering type information from binaries, which remains an open problem.</li>
-<li>trampolines [15], [16], which relies on indirection to insert new code segments without changing the size of basic blocks; Trampolines may significantly increase code size, and the extra level of indirection increases performance overhead.</li>
-<li>reassembleable assembly [12], [13], which creates an assembly file equivalent to what a compiler would emit, i.e., with relocation symbols for the linker to resolve. Consequently, we believe that resymbolizing binaries for reassembleable assembly is one the most promising technique for static binary rewriting.</li>
+<ol type="1">
+<li>recompilation [14], which attempts to lift the code to an
+intermediate representation; Lifting code to IR for recompilation
+requires correctly recovering type information from binaries, which
+remains an open problem.</li>
+<li>trampolines [15], [16], which relies on indirection to insert new
+code segments without changing the size of basic blocks; Trampolines may
+significantly increase code size, and the extra level of indirection
+increases performance overhead.</li>
+<li>reassembleable assembly [12], [13], which creates an assembly file
+equivalent to what a compiler would emit, i.e., with relocation symbols
+for the linker to resolve. Consequently, we believe that resymbolizing
+binaries for reassembleable assembly is one the most promising technique
+for static binary rewriting.</li>
 </ol>
 
     </div>

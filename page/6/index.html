@@ -227,11 +227,12 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><strong>Taint Analysis Classification</strong></p>
-<ol>
-<li><p>Explicit Analysis<br>How taint propagates based on the data dependencies between variables.</p>
-</li>
-<li><p>Implicit Analysis<br>How taint propogates through condition instructions based on the control dependencies between variables.</p>
-</li>
+<ol type="1">
+<li><p>Explicit Analysis How taint propagates based on the data
+dependencies between variables.</p></li>
+<li><p>Implicit Analysis How taint propogates through condition
+instructions based on the control dependencies between
+variables.</p></li>
 </ol>
           <!--noindex-->
             <div class="post-button">
@@ -324,8 +325,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-Tool-Categories"><a href="#1-Tool-Categories" class="headerlink" title="1. Tool Categories"></a>1. Tool Categories</h4><p>Existing taint analysis tools can be divided into three categories. </p>
-<h5 id="a-Dynamic-Taint-Analysis"><a href="#a-Dynamic-Taint-Analysis" class="headerlink" title="a. Dynamic Taint Analysis"></a>a. Dynamic Taint Analysis</h5><p>The first category of tools track the information flow from taint source to taint sink at runtime following the execution trace. Most of these dynamic analysis tools are built on the top of dynamic binary instrumentation (DBI) framework such as Pin and Valgrind. These tools dynamically insert analysis code into the target executable while the executable is running. Some other tools like PolyTracker work as an LLVM Pass that instruments taint tracking logic into the programs during compilation to perform taint analysis with lower overhead. Such tools always ship with their own compiler, for example, <code>polybuild</code> and <code>polybuild++</code> of Tool PolyTracker. Given a specific input, the dynamic analysis tools will track how the taint is propagated along the executed path.</p>
+          <h4 id="tool-categories">1. Tool Categories</h4>
+<p>Existing taint analysis tools can be divided into three
+categories.</p>
+<h5 id="a.-dynamic-taint-analysis">a. Dynamic Taint Analysis</h5>
+<p>The first category of tools track the information flow from taint
+source to taint sink at runtime following the execution trace. Most of
+these dynamic analysis tools are built on the top of dynamic binary
+instrumentation (DBI) framework such as Pin and Valgrind. These tools
+dynamically insert analysis code into the target executable while the
+executable is running. Some other tools like PolyTracker work as an LLVM
+Pass that instruments taint tracking logic into the programs during
+compilation to perform taint analysis with lower overhead. Such tools
+always ship with their own compiler, for example, <code>polybuild</code>
+and <code>polybuild++</code> of Tool PolyTracker. Given a specific
+input, the dynamic analysis tools will track how the taint is propagated
+along the executed path.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/15/Taint-Benchmark/#more" rel="contents">
@@ -417,8 +432,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-Tool-Categories"><a href="#1-Tool-Categories" class="headerlink" title="1. Tool Categories"></a>1. Tool Categories</h4><p>Existing taint analysis tools can be divided into three categories. </p>
-<h5 id="a-Dynamic-Taint-Analysis"><a href="#a-Dynamic-Taint-Analysis" class="headerlink" title="a. Dynamic Taint Analysis"></a>a. Dynamic Taint Analysis</h5><p>The first category of tools track the information flow from taint source to taint sink at runtime following the execution trace. Most of these dynamic analysis tools are built on the top of dynamic binary instrumentation (DBI) framework such as Pin and Valgrind. These tools dynamically insert analysis code into the target executable while the executable is running. Some other tools like PolyTracker work as an LLVM Pass that instruments taint tracking logic into the programs during compilation to perform taint analysis with lower overhead. Such tools always ship with their own compiler, for example, <code>polybuild</code> and <code>polybuild++</code> of Tool PolyTracker. Given a specific input, the dynamic analysis tools will track how the taint is propagated along the executed path.</p>
+          <h4 id="tool-categories">1. Tool Categories</h4>
+<p>Existing taint analysis tools can be divided into three
+categories.</p>
+<h5 id="a.-dynamic-taint-analysis">a. Dynamic Taint Analysis</h5>
+<p>The first category of tools track the information flow from taint
+source to taint sink at runtime following the execution trace. Most of
+these dynamic analysis tools are built on the top of dynamic binary
+instrumentation (DBI) framework such as Pin and Valgrind. These tools
+dynamically insert analysis code into the target executable while the
+executable is running. Some other tools like PolyTracker work as an LLVM
+Pass that instruments taint tracking logic into the programs during
+compilation to perform taint analysis with lower overhead. Such tools
+always ship with their own compiler, for example, <code>polybuild</code>
+and <code>polybuild++</code> of Tool PolyTracker. Given a specific
+input, the dynamic analysis tools will track how the taint is propagated
+along the executed path.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/15/Tech-Taint-Analysis/#more" rel="contents">
@@ -510,11 +539,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Good Examples:</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="http://iacoma.cs.uiuc.edu/iacoma-papers/ssp19.pdf">http://iacoma.cs.uiuc.edu/iacoma-papers/ssp19.pdf</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.usenix.org/system/files/sec20spring_yan_prepub.pdf">https://www.usenix.org/system/files/sec20spring_yan_prepub.pdf</a></li>
-</ol>
+          <p>Good Examples: 1. http://iacoma.cs.uiuc.edu/iacoma-papers/ssp19.pdf
+2. https://www.usenix.org/system/files/sec20spring_yan_prepub.pdf</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2020/09/13/Science-Writing/#more" rel="contents">
@@ -606,11 +632,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>3 qualities of successful Ph.D. students: <a target="_blank" rel="noopener" href="http://matt.might.net/articles/successful-phd-students/">http://matt.might.net/articles/successful-phd-students/</a></p>
-<p>10 reasons Ph.D. students fail: <a target="_blank" rel="noopener" href="http://matt.might.net/articles/ways-to-fail-a-phd/">http://matt.might.net/articles/ways-to-fail-a-phd/</a></p>
-<p>The Ph.D. Grind: <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/15731248-the-ph-d-grind">https://www.goodreads.com/book/show/15731248-the-ph-d-grind</a></p>
-<p>Faculty Job Search: <a target="_blank" rel="noopener" href="https://pg.ucsd.edu/guo-faculty-job-search.pdf">https://pg.ucsd.edu/guo-faculty-job-search.pdf</a></p>
-<p>Advance: <a target="_blank" rel="noopener" href="https://pg.ucsd.edu/early-stage-PhD-advice.htm">https://pg.ucsd.edu/early-stage-PhD-advice.htm</a></p>
+          <p>3 qualities of successful Ph.D. students:
+http://matt.might.net/articles/successful-phd-students/</p>
+<p>10 reasons Ph.D. students fail:
+http://matt.might.net/articles/ways-to-fail-a-phd/</p>
+<p>The Ph.D. Grind:
+https://www.goodreads.com/book/show/15731248-the-ph-d-grind</p>
+<p>Faculty Job Search:
+https://pg.ucsd.edu/guo-faculty-job-search.pdf</p>
+<p>Advance: https://pg.ucsd.edu/early-stage-PhD-advice.htm</p>
 <p>SoK Paper: Oakland</p>
           <!--noindex-->
             <div class="post-button">

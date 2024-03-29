@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="Side channelSteal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
+    <meta name="description" content="Side channel Steal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Side Channel">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/03/22/Side-Channel/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="Side channelSteal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
+<meta property="og:description" content="Side channel Steal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/03/22/4ShuJOAKLDZVrC5.png">
 <meta property="og:image" content="https://i.loli.net/2021/03/22/bY3NiR8VJ17HeqZ.png">
@@ -117,7 +117,10 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Side-channel"><span class="nav-number">1.</span> <span class="nav-text">Side channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">2.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#RSA-Decryption-Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">RSA Decryption Algorithm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Timing-side-channel"><span class="nav-number">2.2.</span> <span class="nav-text">Timing side channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Break-RSA-with-Timing-Side-Channel"><span class="nav-number">2.3.</span> <span class="nav-text">Break RSA with Timing Side Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Break-RSA-with-Power-Side-channel"><span class="nav-number">2.4.</span> <span class="nav-text">Break RSA with Power Side channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Break-RSA-with-Power-Side-channel-1"><span class="nav-number">2.5.</span> <span class="nav-text">Break RSA with Power Side channel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-based-side-channel"><span class="nav-number">3.</span> <span class="nav-text">Cache-based side channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Meltdown"><span class="nav-number">4.</span> <span class="nav-text">Meltdown</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spectre"><span class="nav-number">4.1.</span> <span class="nav-text">Spectre</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#L1-and-L2-Cache-Side-Channel"><span class="nav-number">4.2.</span> <span class="nav-text">L1 and L2 Cache Side Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LLC-Side-Channel"><span class="nav-number">4.3.</span> <span class="nav-text">LLC Side Channel</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#side-channel"><span class="nav-number">1.</span> <span class="nav-text">Side channel</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#rsa-decryption-algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">RSA Decryption Algorithm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#timing-side-channel"><span class="nav-number">1.2.</span> <span class="nav-text">Timing side channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-rsa-with-timing-side-channel"><span class="nav-number">1.3.</span> <span class="nav-text">Break RSA with Timing Side
+Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-rsa-with-power-side-channel"><span class="nav-number">1.4.</span> <span class="nav-text">Break RSA with Power Side
+channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-rsa-with-power-side-channel-1"><span class="nav-number">1.5.</span> <span class="nav-text">Break RSA with Power Side
+channel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cache-based-side-channel"><span class="nav-number">2.</span> <span class="nav-text">Cache-based side channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meltdown"><span class="nav-number">3.</span> <span class="nav-text">Meltdown</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#spectre"><span class="nav-number">3.1.</span> <span class="nav-text">Spectre</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#l1-and-l2-cache-side-channel"><span class="nav-number">3.2.</span> <span class="nav-text">L1 and L2 Cache Side Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#llc-side-channel"><span class="nav-number">3.3.</span> <span class="nav-text">LLC Side Channel</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -226,45 +229,60 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="Side-channel"><a href="#Side-channel" class="headerlink" title="Side channel"></a>Side channel</h4><p>Steal Secret through side channels</p>
+    <div class="post-body" itemprop="articleBody"><h4 id="side-channel">Side channel</h4>
+<p>Steal Secret through side channels</p>
 <p>side channels: timing; power; em emissions; sound; heat; cache</p>
-<p>Infer secrets via secret-dependent physical information</p>
-<span id="more"></span>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><h5 id="RSA-Decryption-Algorithm"><a href="#RSA-Decryption-Algorithm" class="headerlink" title="RSA Decryption Algorithm"></a>RSA Decryption Algorithm</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> bit in k:</span><br><span class="line">    <span class="comment">// compute square</span></span><br><span class="line">    <span class="keyword">if</span> bit == <span class="number">1</span>:</span><br><span class="line">        <span class="comment">// compute multiply</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
-
-<p>|  square | square  | square &amp; multiply | square &amp; multiply  | …</p>
-<p>|       0      |       0      |                   1               |                    1               | …</p>
-<h5 id="Timing-side-channel"><a href="#Timing-side-channel" class="headerlink" title="Timing side channel"></a>Timing side channel</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (k == <span class="number">1</span>) then</span><br><span class="line">    <span class="comment">// slow branch</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">// fast branch</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
-
-<h5 id="Break-RSA-with-Timing-Side-Channel"><a href="#Break-RSA-with-Timing-Side-Channel" class="headerlink" title="Break RSA with Timing Side Channel"></a>Break RSA with Timing Side Channel</h5><p>|  square |  square | square + multiply | square + multiply | …</p>
-<p>|       0      |       0      |                  1                |                  1                | …</p>
-<p>|     fast   |     fast    |              slow             |               slow            | …</p>
-<h5 id="Break-RSA-with-Power-Side-channel"><a href="#Break-RSA-with-Power-Side-channel" class="headerlink" title="Break RSA with Power Side channel"></a>Break RSA with Power Side channel</h5><img src="https://i.loli.net/2021/03/22/4ShuJOAKLDZVrC5.png" alt="image-20210322145237378" style="zoom: 43%;" />
-
-<h5 id="Break-RSA-with-Power-Side-channel-1"><a href="#Break-RSA-with-Power-Side-channel-1" class="headerlink" title="Break RSA with Power Side channel"></a>Break RSA with Power Side channel</h5><img src="https://i.loli.net/2021/03/22/bY3NiR8VJ17HeqZ.png" alt="image-20210322145348892" style="zoom:50%;" />
-
-<h4 id="Cache-based-side-channel"><a href="#Cache-based-side-channel" class="headerlink" title="Cache-based side channel"></a>Cache-based side channel</h4><p>Cache lines: minimal storage units of a cache 64 bytes</p>
+<p>Infer secrets via secret-dependent physical information <span id="more"></span>
+#### Example</p>
+<h5 id="rsa-decryption-algorithm">RSA Decryption Algorithm</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> bit in k:</span><br><span class="line">    <span class="comment">// compute square</span></span><br><span class="line">    <span class="keyword">if</span> bit == <span class="number">1</span>:</span><br><span class="line">        <span class="comment">// compute multiply</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
+<div class="line-block"> square | square | square &amp; multiply |
+square &amp; multiply | ...</div>
+<div class="line-block">      0 | 0 | 1 | 1 | ...</div>
+<h5 id="timing-side-channel">Timing side channel</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (k == <span class="number">1</span>) then</span><br><span class="line">    <span class="comment">// slow branch</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">// fast branch</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
+<h5 id="break-rsa-with-timing-side-channel">Break RSA with Timing Side
+Channel</h5>
+<div class="line-block"> square | square | square + multiply | square +
+multiply | ...</div>
+<div class="line-block">      0 | 0 | 1 | 1 | ...</div>
+<div class="line-block">    fast | fast | slow | slow | ...</div>
+<h5 id="break-rsa-with-power-side-channel">Break RSA with Power Side
+channel</h5>
+<p><img src="https://i.loli.net/2021/03/22/4ShuJOAKLDZVrC5.png" alt="image-20210322145237378" style="zoom: 43%;" /></p>
+<h5 id="break-rsa-with-power-side-channel-1">Break RSA with Power Side
+channel</h5>
+<p><img src="https://i.loli.net/2021/03/22/bY3NiR8VJ17HeqZ.png" alt="image-20210322145348892" style="zoom:50%;" /></p>
+<h4 id="cache-based-side-channel">Cache-based side channel</h4>
+<p>Cache lines: minimal storage units of a cache 64 bytes</p>
 <p>Cache sets: equal number of cache lines</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Table Lookup</span></span><br><span class="line">x = A[idx]</span><br></pre></td></tr></table></figure>
-
-<p>idx is virtual address, for L1 and L2 cache, virtual address is used for indexing, however for L3 cache, physical address is used.</p>
-<p>The upper part of a memory address maps a memory access to a cache line access</p>
+<p>idx is virtual address, for L1 and L2 cache, virtual address is used
+for indexing, however for L3 cache, physical address is used.</p>
+<p>The upper part of a memory address maps a memory access to a cache
+line access</p>
 <ul>
-<li><p>Set index: locate the set in which the data may be stored. </p>
-</li>
-<li><p>Tag: confirm the data is present in one of its lines</p>
-</li>
+<li><p>Set index: locate the set in which the data may be
+stored.</p></li>
+<li><p>Tag: confirm the data is present in one of its lines</p></li>
 </ul>
-<img src="https://i.loli.net/2021/03/22/9g463RPiF8rLUET.png" alt="image-20210322150113988" style="zoom:33%;" />
-
-<p>The System model for a multi-core processor, L1 and L2 cache is private to each core and LLC is shared across multiple cores;</p>
-<img src="https://i.loli.net/2021/03/22/qSvZraW2K5MneRP.png" alt="image-20210322145946903" style="zoom:30%;" />
-
+<p><img src="https://i.loli.net/2021/03/22/9g463RPiF8rLUET.png" alt="image-20210322150113988" style="zoom:33%;" /></p>
+<p>The System model for a multi-core processor, L1 and L2 cache is
+private to each core and LLC is shared across multiple cores;</p>
+<p><img src="https://i.loli.net/2021/03/22/qSvZraW2K5MneRP.png" alt="image-20210322145946903" style="zoom:30%;" /></p>
 <p>Threat model</p>
-<p><img src="https://i.loli.net/2021/03/22/umxjnMIq9FlD3N4.png" alt="image-20210322192746039"></p>
+<figure>
+<img src="https://i.loli.net/2021/03/22/umxjnMIq9FlD3N4.png"
+alt="image-20210322192746039" />
+<figcaption aria-hidden="true">image-20210322192746039</figcaption>
+</figure>
 <p>Support</p>
-<h4 id="Meltdown"><a href="#Meltdown" class="headerlink" title="Meltdown"></a>Meltdown</h4><h5 id="Spectre"><a href="#Spectre" class="headerlink" title="Spectre"></a>Spectre</h5><h5 id="L1-and-L2-Cache-Side-Channel"><a href="#L1-and-L2-Cache-Side-Channel" class="headerlink" title="L1 and L2 Cache Side Channel"></a>L1 and L2 Cache Side Channel</h5><p>Prime-and-Probe</p>
-<h5 id="LLC-Side-Channel"><a href="#LLC-Side-Channel" class="headerlink" title="LLC Side Channel"></a>LLC Side Channel</h5>
+<h4 id="meltdown">Meltdown</h4>
+<h5 id="spectre">Spectre</h5>
+<h5 id="l1-and-l2-cache-side-channel">L1 and L2 Cache Side Channel</h5>
+<p>Prime-and-Probe</p>
+<h5 id="llc-side-channel">LLC Side Channel</h5>
+
     </div>
 
     

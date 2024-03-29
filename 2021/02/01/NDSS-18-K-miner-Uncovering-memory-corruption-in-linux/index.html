@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="AbstractOperating system kernels are appealing attack targets: compromising the kernel usually allows attackers to bypass all deployed security mechanisms and take control over the entire system. Comm">
+    <meta name="description" content="Abstract Operating system kernels are appealing attack targets: compromising the kernel usually allows attackers to bypass all deployed security mechanisms and take control over the entire system. Com">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[NDSS&#39;18] K-miner: Uncovering memory corruption in linux">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/02/01/NDSS-18-K-miner-Uncovering-memory-corruption-in-linux/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="AbstractOperating system kernels are appealing attack targets: compromising the kernel usually allows attackers to bypass all deployed security mechanisms and take control over the entire system. Comm">
+<meta property="og:description" content="Abstract Operating system kernels are appealing attack targets: compromising the kernel usually allows attackers to bypass all deployed security mechanisms and take control over the entire system. Com">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-01T07:39:37.000Z">
 <meta property="article:modified_time" content="2024-03-27T05:21:36.061Z">
@@ -113,7 +113,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline"><span class="nav-number">2.</span> <span class="nav-text">Outline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Difficulties-of-OS-Kernel-Fuzzing"><span class="nav-number">2.1.</span> <span class="nav-text">1. Difficulties of OS Kernel Fuzzing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Drawbacks-of-previous-work"><span class="nav-number">2.2.</span> <span class="nav-text">2. Drawbacks of previous work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Why-this-paper-is-accepted"><span class="nav-number">2.3.</span> <span class="nav-text">3. Why this paper is accepted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-How-it-works"><span class="nav-number">2.4.</span> <span class="nav-text">4. How it works</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Technique-details"><span class="nav-number">2.5.</span> <span class="nav-text">5. Technique details</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Evaluation"><span class="nav-number">2.6.</span> <span class="nav-text">6. Evaluation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Examples"><span class="nav-number">2.7.</span> <span class="nav-text">7. Examples</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Reflection"><span class="nav-number">2.8.</span> <span class="nav-text">8. Reflection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Bug-report"><span class="nav-number">2.9.</span> <span class="nav-text">9. Bug report</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outline"><span class="nav-number">2.</span> <span class="nav-text">Outline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#difficulties-of-os-kernel-fuzzing"><span class="nav-number">2.1.</span> <span class="nav-text">1. Difficulties of OS Kernel
+Fuzzing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drawbacks-of-previous-work"><span class="nav-number">2.2.</span> <span class="nav-text">2. Drawbacks of previous work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-this-paper-is-accepted"><span class="nav-number">2.3.</span> <span class="nav-text">3. Why this paper is accepted</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-it-works"><span class="nav-number">2.4.</span> <span class="nav-text">4. How it works</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#technique-details"><span class="nav-number">2.5.</span> <span class="nav-text">5. Technique details</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evaluation"><span class="nav-number">2.6.</span> <span class="nav-text">6. Evaluation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#examples"><span class="nav-number">2.7.</span> <span class="nav-text">7. Examples</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reflection"><span class="nav-number">2.8.</span> <span class="nav-text">8. Reflection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bug-report"><span class="nav-number">2.9.</span> <span class="nav-text">9. Bug report</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -231,45 +232,114 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Operating system kernels are appealing attack targets: compromising the kernel usually allows attackers to bypass all deployed security mechanisms and take control over the entire system. Commodity kernels, like Linux, are written in low-level programming languages that offer only limited type and memory-safety guarantees, enabling adversaries to launch sophisticated run-time attacks against the kernel by exploiting memory-corruption vulnerabilities.</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="abstract">Abstract</h3>
+<p>Operating system kernels are appealing attack targets: compromising
+the kernel usually allows attackers to bypass all deployed security
+mechanisms and take control over the entire system. Commodity kernels,
+like Linux, are written in low-level programming languages that offer
+only limited type and memory-safety guarantees, enabling adversaries to
+launch sophisticated run-time attacks against the kernel by exploiting
+memory-corruption vulnerabilities.</p>
 <span id="more"></span>
-
-<p>Many defenses have been proposed to protect operating systems at run time, such as control-flow integrity (CFI). However, the goal of these runtime monitors is to prevent exploitation as a symptom of memory corruption, rather than eliminating the underlying root cause, i.e., bugs in the kernel code. While finding bugs can be automated, e.g., using static analysis, all existing approaches are limited to local, intra-procedural checks, and face severe scalability challenges due to the large kernel code base. Consequently, there currently exist no tools for conducting global static analysis of operating system kernels.</p>
-<p>In this paper, we present <em>K-Miner</em>, a new framework to efficiently analyze large, commodity operating system kernels like Linux. Our novel approach exploits the highly standardized interface structure of the kernel code to enable scalable pointer analysis and conduct global, context-sensitive analysis. Through our inter-procedural analysis we show that K-Miner systematically and reliably uncovers several different classes of memory-corruption vulnerabilities, such as dangling pointers, user-after-free, double-free, and double-lock vulnerabilities. We thoroughly evaluate our extensible analysis framework, which leverages the popular and widely used LLVM compiler suite, for the current Linux kernel and demonstrate its effectiveness by reporting several memory-corruption vulnerabilities.</p>
-<h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><h4 id="1-Difficulties-of-OS-Kernel-Fuzzing"><a href="#1-Difficulties-of-OS-Kernel-Fuzzing" class="headerlink" title="1. Difficulties of OS Kernel Fuzzing"></a>1. Difficulties of OS Kernel Fuzzing</h4><p>Currently, Linux comprises over 24 million lines of code. The huge size and complexity of its monolithic code base makes precise data-flow analysis for kernel code difficult. The number of possible paths grows exponentially with the code size, and hence, static analysis approaches face severe scalability problems</p>
-<h4 id="2-Drawbacks-of-previous-work"><a href="#2-Drawbacks-of-previous-work" class="headerlink" title="2. Drawbacks of previous work"></a>2. Drawbacks of previous work</h4><ol>
-<li>Run-time monitors are designed to defend against a specific class of attacks. A combination of many different defenses is required to protect the kernel against multiple classes of adversaries.</li>
-<li>Compile-time verification is feasible for small model, but impractical for commodity monolithic kernels due to their size and extensive use of machine-level code</li>
-<li>Static analysis safely over-approximates program execution, allowing for strong statements in the case of negative analysis results.</li>
-<li>All analysis frameworks for kernel code (Coccinelle&#x2F;Smatch&#x2F;TypeChef&#x2F;APISAN&#x2F;EBA) are limited to <em>intra-procedural</em> analysis, i.e., local checks per function, or simple file-based analysis.</li>
-<li>None of existing static analysis framework supports <em>inter-procedural</em> data-flow analyses therefore they cannot uncover memory corruption caused by global pointer relationships.</li>
-<li>scalable static analysis designed for user space programs cannot simply be applied in kernel setting due to the non-trivial entry point</li>
+<p>Many defenses have been proposed to protect operating systems at run
+time, such as control-flow integrity (CFI). However, the goal of these
+runtime monitors is to prevent exploitation as a symptom of memory
+corruption, rather than eliminating the underlying root cause, i.e.,
+bugs in the kernel code. While finding bugs can be automated, e.g.,
+using static analysis, all existing approaches are limited to local,
+intra-procedural checks, and face severe scalability challenges due to
+the large kernel code base. Consequently, there currently exist no tools
+for conducting global static analysis of operating system kernels.</p>
+<p>In this paper, we present <em>K-Miner</em>, a new framework to
+efficiently analyze large, commodity operating system kernels like
+Linux. Our novel approach exploits the highly standardized interface
+structure of the kernel code to enable scalable pointer analysis and
+conduct global, context-sensitive analysis. Through our inter-procedural
+analysis we show that K-Miner systematically and reliably uncovers
+several different classes of memory-corruption vulnerabilities, such as
+dangling pointers, user-after-free, double-free, and double-lock
+vulnerabilities. We thoroughly evaluate our extensible analysis
+framework, which leverages the popular and widely used LLVM compiler
+suite, for the current Linux kernel and demonstrate its effectiveness by
+reporting several memory-corruption vulnerabilities.</p>
+<h3 id="outline">Outline</h3>
+<h4 id="difficulties-of-os-kernel-fuzzing">1. Difficulties of OS Kernel
+Fuzzing</h4>
+<p>Currently, Linux comprises over 24 million lines of code. The huge
+size and complexity of its monolithic code base makes precise data-flow
+analysis for kernel code difficult. The number of possible paths grows
+exponentially with the code size, and hence, static analysis approaches
+face severe scalability problems</p>
+<h4 id="drawbacks-of-previous-work">2. Drawbacks of previous work</h4>
+<ol type="1">
+<li>Run-time monitors are designed to defend against a specific class of
+attacks. A combination of many different defenses is required to protect
+the kernel against multiple classes of adversaries.</li>
+<li>Compile-time verification is feasible for small model, but
+impractical for commodity monolithic kernels due to their size and
+extensive use of machine-level code</li>
+<li>Static analysis safely over-approximates program execution, allowing
+for strong statements in the case of negative analysis results.</li>
+<li>All analysis frameworks for kernel code
+(Coccinelle/Smatch/TypeChef/APISAN/EBA) are limited to
+<em>intra-procedural</em> analysis, i.e., local checks per function, or
+simple file-based analysis.</li>
+<li>None of existing static analysis framework supports
+<em>inter-procedural</em> data-flow analyses therefore they cannot
+uncover memory corruption caused by global pointer relationships.</li>
+<li>scalable static analysis designed for user space programs cannot
+simply be applied in kernel setting due to the non-trivial entry
+point</li>
 </ol>
-<h4 id="3-Why-this-paper-is-accepted"><a href="#3-Why-this-paper-is-accepted" class="headerlink" title="3. Why this paper is accepted"></a>3. Why this paper is accepted</h4><ul>
-<li>Observation<ul>
-<li>the interface to user space is highly standardized </li>
-<li>partition the kernel code along separate execution paths using the system call interface as a starting point</li>
-</ul>
-</li>
-<li>Challenge of partition the kernel code<ul>
+<h4 id="why-this-paper-is-accepted">3. Why this paper is accepted</h4>
+<ul>
+<li>Observation
+<ul>
+<li>the interface to user space is highly standardized</li>
+<li>partition the kernel code along separate execution paths using the
+system call interface as a starting point</li>
+</ul></li>
+<li>Challenge of partition the kernel code
+<ul>
 <li>frequent reuse of global data structures</li>
 <li>the synchronization between the per-system call</li>
 <li>global memory states (contexts)</li>
-<li>complicated and deeply nested aliasing relationships of pointers</li>
+<li>complicated and deeply nested aliasing relationships of
+pointers</li>
+</ul></li>
+<li><strong>Enable global static analysis for kernel code:</strong> The
+observation significantly reduces the number of relevant paths, allowing
+us to conduct even complex, inter-procedural data-flow analysis in the
+kernel.</li>
 </ul>
-</li>
-<li><strong>Enable global static analysis for kernel code:</strong> The observation significantly reduces the number of relevant paths, allowing us to conduct even complex, inter-procedural data-flow analysis in the kernel.</li>
-</ul>
-<h4 id="4-How-it-works"><a href="#4-How-it-works" class="headerlink" title="4. How it works"></a>4. How it works</h4><p>Because randomly selecting system calls from existing program traces do not result in any coverage improvement over hand-coded rules, this paper leverages light-weight static analysis for efficiently detecting dependencies across different system calls.</p>
-<h4 id="5-Technique-details"><a href="#5-Technique-details" class="headerlink" title="5. Technique details"></a>5. Technique details</h4><p>Built on top of LLVM Pass to analyze system calls simultaneously</p>
-<p>For every system call, K-Miner generates a call graph (CG), a value- flow graph (VFG), a pointer-analysis graph (PAG), and several other internal data structures by taking the entry point of the system call function as a starting point.</p>
-<p>compute a list of all globally allocated kernel objects, are reachable by any single system call. </p>
-<h4 id="6-Evaluation"><a href="#6-Evaluation" class="headerlink" title="6. Evaluation"></a>6. Evaluation</h4><p>Applying the proposed static analysis framework to all system calls across many different Linux versions</p>
-<p>Uncover several known memory-corruption vulnerabilities that previously required manual inspection of the code</p>
-<h4 id="7-Examples"><a href="#7-Examples" class="headerlink" title="7. Examples"></a>7. Examples</h4><p>integer overflows (IO), use-after-free (UAF), </p>
-<p><strong>dangling pointers (DP):</strong>  A memory location is freed but the pointer is still accessible.</p>
-<p>double free (DF), buffer overflow (BO), missing pointer checks (MPC), uninitialized data (UD), type errors (TE), or synchronization errors (SE)</p>
-<h4 id="8-Reflection"><a href="#8-Reflection" class="headerlink" title="8. Reflection"></a>8. Reflection</h4><h4 id="9-Bug-report"><a href="#9-Bug-report" class="headerlink" title="9. Bug report"></a>9. Bug report</h4>
+<h4 id="how-it-works">4. How it works</h4>
+<p>Because randomly selecting system calls from existing program traces
+do not result in any coverage improvement over hand-coded rules, this
+paper leverages light-weight static analysis for efficiently detecting
+dependencies across different system calls.</p>
+<h4 id="technique-details">5. Technique details</h4>
+<p>Built on top of LLVM Pass to analyze system calls simultaneously</p>
+<p>For every system call, K-Miner generates a call graph (CG), a value-
+flow graph (VFG), a pointer-analysis graph (PAG), and several other
+internal data structures by taking the entry point of the system call
+function as a starting point.</p>
+<p>compute a list of all globally allocated kernel objects, are
+reachable by any single system call.</p>
+<h4 id="evaluation">6. Evaluation</h4>
+<p>Applying the proposed static analysis framework to all system calls
+across many different Linux versions</p>
+<p>Uncover several known memory-corruption vulnerabilities that
+previously required manual inspection of the code</p>
+<h4 id="examples">7. Examples</h4>
+<p>integer overflows (IO), use-after-free (UAF),</p>
+<p><strong>dangling pointers (DP):</strong> A memory location is freed
+but the pointer is still accessible.</p>
+<p>double free (DF), buffer overflow (BO), missing pointer checks (MPC),
+uninitialized data (UD), type errors (TE), or synchronization errors
+(SE)</p>
+<h4 id="reflection">8. Reflection</h4>
+<h4 id="bug-report">9. Bug report</h4>
+
     </div>
 
     

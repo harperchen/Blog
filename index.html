@@ -217,8 +217,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-Joern-Background"><a href="#1-Joern-Background" class="headerlink" title="1. Joern Background"></a>1. Joern Background</h4><p><a target="_blank" rel="noopener" href="https://docs.joern.io/cpgql/reference-card/">https://docs.joern.io/cpgql/reference-card/</a></p>
-<h4 id="2-Joern-Generate-DDG"><a href="#2-Joern-Generate-DDG" class="headerlink" title="2. Joern Generate DDG"></a>2. Joern Generate DDG</h4><p>Method 1: generate in joern console</p>
+          <h4 id="joern-background">1. Joern Background</h4>
+<p>https://docs.joern.io/cpgql/reference-card/</p>
+<h4 id="joern-generate-ddg">2. Joern Generate DDG</h4>
+<p>Method 1: generate in joern console</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">joern&gt; importCode.c.<span class="built_in">fromString</span>(<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">     | static void virtio_pci_remove(struct pci_dev *pci_dev)</span></span><br><span class="line"><span class="string">     | &#123;</span></span><br><span class="line"><span class="string">     |  struct virtio_pci_device *vp_dev = pci_get_drvdata(pci_dev);</span></span><br><span class="line"><span class="string">     |  struct device *dev = get_device(&amp;vp_dev-&gt;vdev.dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  pci_disable_sriov(pci_dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  unregister_virtio_device(&amp;vp_dev-&gt;vdev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  if (vp_dev-&gt;ioaddr)</span></span><br><span class="line"><span class="string">     |      virtio_pci_legacy_remove(vp_dev);</span></span><br><span class="line"><span class="string">     |  else</span></span><br><span class="line"><span class="string">     |      virtio_pci_modern_remove(vp_dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  pci_disable_device(pci_dev);</span></span><br><span class="line"><span class="string">     |  put_device(dev);</span></span><br><span class="line"><span class="string">     | &#125;</span></span><br><span class="line"><span class="string">     | &quot;</span><span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -305,7 +307,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Peripheral hardware in modern computers is typically assumed to be secure and not malicious, and device drivers are implemented in a way that trusts inputs from hardware. However, recent vulnerabilities such as Broadpwn have demonstrated that attackers can exploit hosts through vulnerable peripherals, highlighting the importance of securing the OS-peripheral boundary. In this paper, we propose a hardware-free concolic-augmented fuzzer targeting WiFi and Ethernet drivers, and a technique for generating high-quality initial seeds, which we call golden seeds, that allow fuzzing to bypass difficult code constructs during driver initialization. Compared to prior work using symbolic execution or greybox fuzzing, Drifuzz is more successful at automatically finding inputs that allow network interfaces to be fully initialized, and improves fuzzing coverage by 214% (3.1×) in WiFi drivers and 60% (1.6×) for Ethernet drivers. During our experiments with fourteen PCI and USB network drivers, we find eleven previously unknown bugs, two of which were assigned CVEs.</p>
+          <h4 id="abstract">Abstract</h4>
+<p>Peripheral hardware in modern computers is typically assumed to be
+secure and not malicious, and device drivers are implemented in a way
+that trusts inputs from hardware. However, recent vulnerabilities such
+as Broadpwn have demonstrated that attackers can exploit hosts through
+vulnerable peripherals, highlighting the importance of securing the
+OS-peripheral boundary. In this paper, we propose a hardware-free
+concolic-augmented fuzzer targeting WiFi and Ethernet drivers, and a
+technique for generating high-quality initial seeds, which we call
+golden seeds, that allow fuzzing to bypass difficult code constructs
+during driver initialization. Compared to prior work using symbolic
+execution or greybox fuzzing, Drifuzz is more successful at
+automatically finding inputs that allow network interfaces to be fully
+initialized, and improves fuzzing coverage by 214% (3.1×) in WiFi
+drivers and 60% (1.6×) for Ethernet drivers. During our experiments with
+fourteen PCI and USB network drivers, we find eleven previously unknown
+bugs, two of which were assigned CVEs.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2024/03/27/USENIX-22-Drifuzz-Harvesting-Bugs-in-Device-Drivers-from-Golden-Seeds/#more" rel="contents">
@@ -397,7 +415,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Key-uncover-new-high-risk-impacts-given-a-bug-with-seemingly-low-risk-impacts"><a href="#Key-uncover-new-high-risk-impacts-given-a-bug-with-seemingly-low-risk-impacts" class="headerlink" title="Key: uncover new high-risk impacts given a bug with seemingly low-risk impacts"></a>Key: uncover new high-risk impacts given a bug with seemingly low-risk impacts</h4><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Fuzzing has become one of the most effective bug finding approach for software. In recent years, 24*7 continuous fuzzing platforms have emerged to test critical pieces of software, e.g., Linux kernel. Though capable of discovering many bugs and providing reproducers (e.g., proof-of-concepts), a major problem is that they neglect a critical function that should have been built-in, i.e., evaluation of a bug’s security impact. It is well-known that the lack of understanding of security impact can lead to delayed bug fixes as well as patch propagation. In this paper, we develop SyzScope, a system that can automatically uncover new “high-risk” impacts given a bug with seemingly “low-risk” impacts. From analyzing over a thousand low-risk bugs on syzbot, SyzScope successfully determined that 183 low-risk bugs (more than 15%) in fact contain high-risk impacts, e.g., control flow hijack and arbitrary memory write, some of which still do not have patches available yet.</p>
+          <h4
+id="key-uncover-new-high-risk-impacts-given-a-bug-with-seemingly-low-risk-impacts">Key:
+uncover new high-risk impacts given a bug with seemingly low-risk
+impacts</h4>
+<h4 id="abstract">Abstract</h4>
+<p>Fuzzing has become one of the most effective bug finding approach for
+software. In recent years, 24*7 continuous fuzzing platforms have
+emerged to test critical pieces of software, e.g., Linux kernel. Though
+capable of discovering many bugs and providing reproducers (e.g.,
+proof-of-concepts), a major problem is that they neglect a critical
+function that should have been built-in, i.e., evaluation of a bug’s
+security impact. It is well-known that the lack of understanding of
+security impact can lead to delayed bug fixes as well as patch
+propagation. In this paper, we develop SyzScope, a system that can
+automatically uncover new “high-risk” impacts given a bug with seemingly
+“low-risk” impacts. From analyzing over a thousand low-risk bugs on
+syzbot, SyzScope successfully determined that 183 low-risk bugs (more
+than 15%) in fact contain high-risk impacts, e.g., control flow hijack
+and arbitrary memory write, some of which still do not have patches
+available yet.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2022/05/20/USENIX-22-SyzScope-Revealing-High-Risk-Security-Impacts-of-Fuzzer-Exposed-Bugs-in-Linux-kernel/#more" rel="contents">
@@ -489,7 +526,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="Key-use-complexity-of-uncovered-code-to-foresee-the-benefits-of-fuzzing-a-seed-Input-Potential"><a href="#Key-use-complexity-of-uncovered-code-to-foresee-the-benefits-of-fuzzing-a-seed-Input-Potential" class="headerlink" title="Key: use complexity of uncovered code to foresee the benefits of fuzzing a seed (Input Potential)"></a>Key: use complexity of uncovered code to foresee the benefits of fuzzing a seed (Input Potential)</h4><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Existing greybox fuzzers mainly utilize program coverage as the goal to guide the fuzzing process. To maximize their outputs, coveragebased greybox fuzzers need to evaluate the quality of seeds properly, which involves making two decisions: 1) which is the most promising seed to fuzz next (seed prioritization), and 2) how many efforts should be made to the current seed (power scheduling). In this paper, we present our fuzzer, Cerebro, to address the above challenges. For the seed prioritization problem, we propose an online<br>multi-objective based algorithm to balance various metrics such as code complexity, coverage, execution time, etc. To address the power scheduling problem, we introduce the concept of input potential to measure the complexity of uncovered code and propose a<br>cost-effective algorithm to update it dynamically. Unlike previous approaches where the fuzzer evaluates an input solely based on the execution traces that it has covered, Cerebro is able to foresee the benefits of fuzzing the input by adaptively evaluating its input potential. We perform a thorough evaluation for Cerebro on 8 different real-world programs. The experiments show that Cerebro can find more vulnerabilities and achieve better coverage than state-of-the-art fuzzers such as AFL and AFLFast.</p>
+          <h4
+id="key-use-complexity-of-uncovered-code-to-foresee-the-benefits-of-fuzzing-a-seed-input-potential">Key:
+use complexity of uncovered code to foresee the benefits of fuzzing a
+seed (Input Potential)</h4>
+<h4 id="abstract">Abstract</h4>
+<p>Existing greybox fuzzers mainly utilize program coverage as the goal
+to guide the fuzzing process. To maximize their outputs, coveragebased
+greybox fuzzers need to evaluate the quality of seeds properly, which
+involves making two decisions: 1) which is the most promising seed to
+fuzz next (seed prioritization), and 2) how many efforts should be made
+to the current seed (power scheduling). In this paper, we present our
+fuzzer, Cerebro, to address the above challenges. For the seed
+prioritization problem, we propose an online multi-objective based
+algorithm to balance various metrics such as code complexity, coverage,
+execution time, etc. To address the power scheduling problem, we
+introduce the concept of input potential to measure the complexity of
+uncovered code and propose a cost-effective algorithm to update it
+dynamically. Unlike previous approaches where the fuzzer evaluates an
+input solely based on the execution traces that it has covered, Cerebro
+is able to foresee the benefits of fuzzing the input by adaptively
+evaluating its input potential. We perform a thorough evaluation for
+Cerebro on 8 different real-world programs. The experiments show that
+Cerebro can find more vulnerabilities and achieve better coverage than
+state-of-the-art fuzzers such as AFL and AFLFast.
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2022/05/10/FSE-19-Cerebro-Context-Aware-Adaptive-Fuzzing-for-Effective-Vulnerability-Detection/#more" rel="contents">
@@ -581,7 +641,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-Clang-Santizer-Coverage"><a href="#1-Clang-Santizer-Coverage" class="headerlink" title="1. Clang Santizer Coverage"></a>1. Clang Santizer Coverage</h4><p>给定如下程序<code>test.c</code>，该程序有三个边：</p>
+          <h4 id="clang-santizer-coverage">1. Clang Santizer Coverage</h4>
+<p>给定如下程序<code>test.c</code>，该程序有三个边：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">(<span class="type">int</span> *a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a) &#123;</span><br><span class="line">        *a = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a; </span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please enter one numbers:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">foo</span>(&amp;a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -674,7 +735,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Finding and exploiting vulnerabilities in binary code is a challenging task. The lack of high-level, semantically rich information about data structures and control constructs makes the analysis of program properties harder to scale. However, the importance of binary analysis is on the rise. In many situations binary analysis is the only possible way to prove (or disprove) properties about the code that is <em>actually</em> executed.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Finding and exploiting vulnerabilities in binary code is a
+challenging task. The lack of high-level, semantically rich information
+about data structures and control constructs makes the analysis of
+program properties harder to scale. However, the importance of binary
+analysis is on the rise. In many situations binary analysis is the only
+possible way to prove (or disprove) properties about the code that is
+<em>actually</em> executed.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/06/04/S-P-16-State-of-The-Art-of-War-Offensive-Techniques-in-Binary-Analysis/#more" rel="contents">
@@ -757,18 +825,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Static-Value-Flow-Analysis-Framework"><a href="#Static-Value-Flow-Analysis-Framework" class="headerlink" title="Static Value-Flow Analysis Framework"></a>Static Value-Flow Analysis Framework</h3><p>A scalable, precise and on-demand interprocedural program dependence analysis framework for both sequential and multithreaded programs.</p>
-<h5 id="Value-Flow-Analysis"><a href="#Value-Flow-Analysis" class="headerlink" title="Value-Flow Analysis"></a>Value-Flow Analysis</h5><ul>
-<li>resolves both control and data dependence. <ul>
-<li>Does the information generated at program point A flow to another program point B along some execution paths? </li>
-<li>Can function F be called either directly or indirectly from some other function F 0? </li>
-<li>Is there an unsafe memory access that may trigger a bug or security risk?</li>
+          <h3 id="static-value-flow-analysis-framework">Static Value-Flow Analysis
+Framework</h3>
+<p>A scalable, precise and on-demand interprocedural program dependence
+analysis framework for both sequential and multithreaded programs.</p>
+<h5 id="value-flow-analysis">Value-Flow Analysis</h5>
+<ul>
+<li>resolves both control and data dependence.
+<ul>
+<li>Does the information generated at program point A flow to another
+program point B along some execution paths?</li>
+<li>Can function F be called either directly or indirectly from some
+other function F 0?</li>
+<li>Is there an unsafe memory access that may trigger a bug or security
+risk?</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="Key-features-of-SVF"><a href="#Key-features-of-SVF" class="headerlink" title="Key features of SVF"></a>Key features of SVF</h4><ul>
-<li>Sparse: compute and maintain the data-flow facts where necessary</li>
-<li>Selective : support mixed analyses for precision and efficiency trade-offs</li>
+<h4 id="key-features-of-svf">Key features of SVF</h4>
+<ul>
+<li>Sparse: compute and maintain the data-flow facts where
+necessary</li>
+<li>Selective : support mixed analyses for precision and efficiency
+trade-offs</li>
 <li>On-demand : reason about program parts based on user queries.</li>
 </ul>
           <!--noindex-->
@@ -853,7 +931,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Hybrid fuzzing which combines fuzzing and concolic execution has become an advanced technique for software vulnerability detection. Based on the observation that fuzzing and concolic execution are complementary in nature, the state-of-theart hybrid fuzzing systems deploy “demand launch” and “optimal switch” strategies. Although these ideas sound intriguing, we point out several fundamental limitations in them, due to oversimplified assumptions. We then propose a novel “discriminative dispatch” strategy to better utilize the capability of concolic execution. We design a Monte Carlo based probabilistic path prioritization model to quantify each path’s difficulty and prioritize them for concolic execution. This model treats fuzzing as a random sampling process. It calculates each path’s probability based on the sampling information. Finally, our model prioritizes and assigns the most difficult paths to concolic execution. We implement a prototype system DigFuzz and evaluate our system with two representative datasets. Results show that the concolic execution in DigFuzz outperforms than those in state-of-the-art hybrid fuzzing systems in every major aspect. In particular, the concolic execution in DigFuzz contributes to discovering more vulnerabilities (12 vs. 5) and producing more code coverage (18.9% vs. 3.8%) on the CQE dataset than the concolic execution in Driller.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Hybrid fuzzing which combines fuzzing and concolic execution has
+become an advanced technique for software vulnerability detection. Based
+on the observation that fuzzing and concolic execution are complementary
+in nature, the state-of-theart hybrid fuzzing systems deploy “demand
+launch” and “optimal switch” strategies. Although these ideas sound
+intriguing, we point out several fundamental limitations in them, due to
+oversimplified assumptions. We then propose a novel “discriminative
+dispatch” strategy to better utilize the capability of concolic
+execution. We design a Monte Carlo based probabilistic path
+prioritization model to quantify each path’s difficulty and prioritize
+them for concolic execution. This model treats fuzzing as a random
+sampling process. It calculates each path’s probability based on the
+sampling information. Finally, our model prioritizes and assigns the
+most difficult paths to concolic execution. We implement a prototype
+system DigFuzz and evaluate our system with two representative datasets.
+Results show that the concolic execution in DigFuzz outperforms than
+those in state-of-the-art hybrid fuzzing systems in every major aspect.
+In particular, the concolic execution in DigFuzz contributes to
+discovering more vulnerabilities (12 vs. 5) and producing more code
+coverage (18.9% vs. 3.8%) on the CQE dataset than the concolic execution
+in Driller.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/06/02/NDSS-19-Send-Hardest-Problems-My-Way-Probabilistic-Path-Prioritization-for-Hybrid-Fuzzing/#more" rel="contents">
@@ -936,18 +1035,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h3><ul>
-<li>Binary Lifting <em><strong>libVEX</strong></em> : Binary Code  to VEX IR</li>
-<li>Binary Loading <em><strong>CLE</strong></em> : load binary with differernt formats<ul>
+          <h3 id="workflow">Workflow</h3>
+<ul>
+<li>Binary Lifting <strong><em>libVEX</em></strong> : Binary Code to VEX
+IR</li>
+<li>Binary Loading <strong><em>CLE</em></strong> : load binary with
+differernt formats
+<ul>
 <li>Resolve dynamic symbol</li>
 <li>Perform relocation</li>
 <li>Initialize program state</li>
-</ul>
-</li>
-<li>Program State Representation: <em><strong>SimuVEX</strong></em><ul>
-<li>Program state (<em><strong>SimState</strong></em>) is a snapshot of values in registers and memory, open files, etc.</li>
-</ul>
-</li>
+</ul></li>
+<li>Program State Representation: <strong><em>SimuVEX</em></strong>
+<ul>
+<li>Program state (<strong><em>SimState</em></strong>) is a snapshot of
+values in registers and memory, open files, etc.</li>
+</ul></li>
 </ul>
 
       
@@ -1024,7 +1127,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>We introduce equivalence modulo inputs (EMI), a simple, widely applicable methodology for validating optimizing compilers. Our key insight is to exploit the close interplay between (1) dynamically executing a program on some test inputs and (2) statically compiling the program to work on all possible inputs. Indeed, the test inputs induce a natural collection of the original program’s EMI variants, which can help differentially test any compiler and specifically target the difficult-to-find miscompilations. </p>
+          <h3 id="abstract">Abstract</h3>
+<p>We introduce equivalence modulo inputs (EMI), a simple, widely
+applicable methodology for validating optimizing compilers. Our key
+insight is to exploit the close interplay between (1) dynamically
+executing a program on some test inputs and (2) statically compiling the
+program to work on all possible inputs. Indeed, the test inputs induce a
+natural collection of the original program’s EMI variants, which can
+help differentially test any compiler and specifically target the
+difficult-to-find miscompilations.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/05/20/PLDI-14-Compiler-Validation-via-Equivalence-Modulo-Inputs/#more" rel="contents">

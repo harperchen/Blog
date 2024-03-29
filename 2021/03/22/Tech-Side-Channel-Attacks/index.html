@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="Side channel AttacksSteal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
+    <meta name="description" content="Side channel Attacks Steal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Tech] Side Channel Attacks">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/03/22/Tech-Side-Channel-Attacks/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="Side channel AttacksSteal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
+<meta property="og:description" content="Side channel Attacks Steal Secret through side channels side channels: timing; power; em emissions; sound; heat; cache Infer secrets via secret-dependent physical information">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/03/22/4ShuJOAKLDZVrC5.png">
 <meta property="og:image" content="https://i.loli.net/2021/03/22/bY3NiR8VJ17HeqZ.png">
@@ -117,7 +117,10 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Side-channel-Attacks"><span class="nav-number">1.</span> <span class="nav-text">Side channel Attacks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">2.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#RSA-Decryption-Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">RSA Decryption Algorithm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Timing-side-channel"><span class="nav-number">2.2.</span> <span class="nav-text">Timing side channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Break-RSA-with-Timing-Side-Channel"><span class="nav-number">2.3.</span> <span class="nav-text">Break RSA with Timing Side Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Break-RSA-with-Power-Side-channel"><span class="nav-number">2.4.</span> <span class="nav-text">Break RSA with Power Side channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Break-RSA-with-Power-Side-channel-1"><span class="nav-number">2.5.</span> <span class="nav-text">Break RSA with Power Side channel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-based-side-channel"><span class="nav-number">3.</span> <span class="nav-text">Cache-based side channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Meltdown"><span class="nav-number">4.</span> <span class="nav-text">Meltdown</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spectre"><span class="nav-number">4.1.</span> <span class="nav-text">Spectre</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#L1-and-L2-Cache-Side-Channel"><span class="nav-number">4.2.</span> <span class="nav-text">L1 and L2 Cache Side Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LLC-Side-Channel"><span class="nav-number">4.3.</span> <span class="nav-text">LLC Side Channel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Branch-Prediction"><span class="nav-number">5.</span> <span class="nav-text">Branch Prediction</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#side-channel-attacks"><span class="nav-number">1.</span> <span class="nav-text">Side channel Attacks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#example"><span class="nav-number">2.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#rsa-decryption-algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">RSA Decryption Algorithm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#timing-side-channel"><span class="nav-number">2.2.</span> <span class="nav-text">Timing side channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-rsa-with-timing-side-channel"><span class="nav-number">2.3.</span> <span class="nav-text">Break RSA with Timing Side
+Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-rsa-with-power-side-channel"><span class="nav-number">2.4.</span> <span class="nav-text">Break RSA with Power Side
+channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#break-rsa-with-power-side-channel-1"><span class="nav-number">2.5.</span> <span class="nav-text">Break RSA with Power Side
+channel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cache-based-side-channel"><span class="nav-number">3.</span> <span class="nav-text">Cache-based side channel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meltdown"><span class="nav-number">4.</span> <span class="nav-text">Meltdown</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#spectre"><span class="nav-number">4.1.</span> <span class="nav-text">Spectre</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#l1-and-l2-cache-side-channel"><span class="nav-number">4.2.</span> <span class="nav-text">L1 and L2 Cache Side Channel</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#llc-side-channel"><span class="nav-number">4.3.</span> <span class="nav-text">LLC Side Channel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#branch-prediction"><span class="nav-number">5.</span> <span class="nav-text">Branch Prediction</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -226,49 +229,119 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="Side-channel-Attacks"><a href="#Side-channel-Attacks" class="headerlink" title="Side channel Attacks"></a>Side channel Attacks</h4><p>Steal Secret through side channels</p>
+    <div class="post-body" itemprop="articleBody"><h4 id="side-channel-attacks">Side channel Attacks</h4>
+<p>Steal Secret through side channels</p>
 <p>side channels: timing; power; em emissions; sound; heat; cache</p>
 <p>Infer secrets via secret-dependent physical information</p>
 <span id="more"></span>
-
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><h5 id="RSA-Decryption-Algorithm"><a href="#RSA-Decryption-Algorithm" class="headerlink" title="RSA Decryption Algorithm"></a>RSA Decryption Algorithm</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> bit in k:</span><br><span class="line">    <span class="comment">// compute square</span></span><br><span class="line">    <span class="keyword">if</span> bit == <span class="number">1</span>:</span><br><span class="line">        <span class="comment">// compute multiply</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
-
-<p>|  square | square  | square &amp; multiply | square &amp; multiply  | …</p>
-<p>|       0      |       0      |                   1               |                    1               | …</p>
-<h5 id="Timing-side-channel"><a href="#Timing-side-channel" class="headerlink" title="Timing side channel"></a>Timing side channel</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (k == <span class="number">1</span>) then</span><br><span class="line">    <span class="comment">// slow branch</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">// fast branch</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
-
-<h5 id="Break-RSA-with-Timing-Side-Channel"><a href="#Break-RSA-with-Timing-Side-Channel" class="headerlink" title="Break RSA with Timing Side Channel"></a>Break RSA with Timing Side Channel</h5><p>|  square |  square | square + multiply | square + multiply | …</p>
-<p>|       0      |       0      |                  1                |                  1                | …</p>
-<p>|     fast   |     fast    |              slow             |               slow            | …</p>
-<h5 id="Break-RSA-with-Power-Side-channel"><a href="#Break-RSA-with-Power-Side-channel" class="headerlink" title="Break RSA with Power Side channel"></a>Break RSA with Power Side channel</h5><img src="https://i.loli.net/2021/03/22/4ShuJOAKLDZVrC5.png" alt="image-20210322145237378" style="zoom: 43%;" />
-
-<h5 id="Break-RSA-with-Power-Side-channel-1"><a href="#Break-RSA-with-Power-Side-channel-1" class="headerlink" title="Break RSA with Power Side channel"></a>Break RSA with Power Side channel</h5><img src="https://i.loli.net/2021/03/22/bY3NiR8VJ17HeqZ.png" alt="image-20210322145348892" style="zoom:50%;" />
-
-<h4 id="Cache-based-side-channel"><a href="#Cache-based-side-channel" class="headerlink" title="Cache-based side channel"></a>Cache-based side channel</h4><p>Cache lines: minimal storage units of a cache 64 bytes</p>
+<h4 id="example">Example</h4>
+<h5 id="rsa-decryption-algorithm">RSA Decryption Algorithm</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> bit in k:</span><br><span class="line">    <span class="comment">// compute square</span></span><br><span class="line">    <span class="keyword">if</span> bit == <span class="number">1</span>:</span><br><span class="line">        <span class="comment">// compute multiply</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
+<div class="line-block"> square | square | square &amp; multiply |
+square &amp; multiply | ...</div>
+<div class="line-block">      0 | 0 | 1 | 1 | ...</div>
+<h5 id="timing-side-channel">Timing side channel</h5>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (k == <span class="number">1</span>) then</span><br><span class="line">    <span class="comment">// slow branch</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">// fast branch</span></span><br><span class="line">endfor</span><br></pre></td></tr></table></figure>
+<h5 id="break-rsa-with-timing-side-channel">Break RSA with Timing Side
+Channel</h5>
+<div class="line-block"> square | square | square + multiply | square +
+multiply | ...</div>
+<div class="line-block">      0 | 0 | 1 | 1 | ...</div>
+<div class="line-block">    fast | fast | slow | slow | ...</div>
+<h5 id="break-rsa-with-power-side-channel">Break RSA with Power Side
+channel</h5>
+<p><img src="https://i.loli.net/2021/03/22/4ShuJOAKLDZVrC5.png" alt="image-20210322145237378" style="zoom: 43%;" /></p>
+<h5 id="break-rsa-with-power-side-channel-1">Break RSA with Power Side
+channel</h5>
+<p><img src="https://i.loli.net/2021/03/22/bY3NiR8VJ17HeqZ.png" alt="image-20210322145348892" style="zoom:50%;" /></p>
+<h4 id="cache-based-side-channel">Cache-based side channel</h4>
+<p>Cache lines: minimal storage units of a cache 64 bytes</p>
 <p>Cache sets: equal number of cache lines</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Table Lookup</span></span><br><span class="line">x = A[idx]</span><br></pre></td></tr></table></figure>
-
-<p>idx is virtual address, for L1 and L2 cache, virtual address is used for indexing, however for L3 cache, physical address is used.</p>
-<p>The upper part of a memory address maps a memory access to a cache line access</p>
+<p>idx is virtual address, for L1 and L2 cache, virtual address is used
+for indexing, however for L3 cache, physical address is used.</p>
+<p>The upper part of a memory address maps a memory access to a cache
+line access</p>
 <ul>
-<li><p>Set index: locate the set in which the data may be stored. </p>
-</li>
-<li><p>Tag: confirm the data is present in one of its lines</p>
-</li>
+<li><p>Set index: locate the set in which the data may be
+stored.</p></li>
+<li><p>Tag: confirm the data is present in one of its lines</p></li>
 </ul>
-<img src="https://i.loli.net/2021/03/22/9g463RPiF8rLUET.png" alt="image-20210322150113988" style="zoom:33%;" />
-
-<p>The System model for a multi-core processor, L1 and L2 cache is private to each core and LLC is shared across multiple cores;</p>
-<img src="https://i.loli.net/2021/03/22/qSvZraW2K5MneRP.png" alt="image-20210322145946903" style="zoom:30%;" />
-
+<p><img src="https://i.loli.net/2021/03/22/9g463RPiF8rLUET.png" alt="image-20210322150113988" style="zoom:33%;" /></p>
+<p>The System model for a multi-core processor, L1 and L2 cache is
+private to each core and LLC is shared across multiple cores;</p>
+<p><img src="https://i.loli.net/2021/03/22/qSvZraW2K5MneRP.png" alt="image-20210322145946903" style="zoom:30%;" /></p>
 <p>Threat model</p>
-<p><img src="https://i.loli.net/2021/03/22/umxjnMIq9FlD3N4.png" alt="image-20210322192746039"></p>
+<figure>
+<img src="https://i.loli.net/2021/03/22/umxjnMIq9FlD3N4.png"
+alt="image-20210322192746039" />
+<figcaption aria-hidden="true">image-20210322192746039</figcaption>
+</figure>
 <p>Support</p>
-<h4 id="Meltdown"><a href="#Meltdown" class="headerlink" title="Meltdown"></a>Meltdown</h4><h5 id="Spectre"><a href="#Spectre" class="headerlink" title="Spectre"></a>Spectre</h5><h5 id="L1-and-L2-Cache-Side-Channel"><a href="#L1-and-L2-Cache-Side-Channel" class="headerlink" title="L1 and L2 Cache Side Channel"></a>L1 and L2 Cache Side Channel</h5><p>Prime-and-Probe</p>
-<h5 id="LLC-Side-Channel"><a href="#LLC-Side-Channel" class="headerlink" title="LLC Side Channel"></a>LLC Side Channel</h5><h4 id="Branch-Prediction"><a href="#Branch-Prediction" class="headerlink" title="Branch Prediction"></a>Branch Prediction</h4><p>Branch prediction is one of the most important features of modern pipelined processors. At a high level, an instruction pipeline consists of four major stages: fetch, decode, execute, and write-back. At any given time, there are a number of instructions in-flight in the pipeline. Pro- cessors exploit instruction-level parallelism and out-of-order execution to maximize the throughput while still maintaining in-order retirement of instructions. Branch instructions can severely reduce instruction throughput since the processor cannot execute past the branch until the branch’s target and outcome are determined. Unless mitigated, branches would lead to pipeline stalls, also known as bubbles. Hence, modern processors use a branch prediction unit (BPU) to <em>predict</em> branch outcomes and branch targets. While the BPU increases throughput in general, it is worth noting that in the case of a misprediction, there is a pretty high penalty because the processor needs to clear the pipeline and roll back any speculative execution results. This is why Intel provides a dedicated hardware feature (the LBR) to profile branch execution</p>
-<p><strong>Branch and branch target prediction.</strong> <em>Branch prediction</em> is a procedure to predict the next instruction of a conditional branch by guessing whether it will be taken. <em>Branch target prediction</em> is a procedure to predict and fetch the target instruction of a branch before executing it. For branch target prediction, modern processors have the BTB to store the computed target addresses of taken branch instructions and fetch them when the corresponding branch instructions are predicted as taken.</p>
-<p><strong>BTB structure and partial tag hit.</strong> The BTB is an associative structure that resembles a cache. Address bits are used to compute the set index and tag fields. The number of bits used for set index is determined by the size of the BTB. Unlike a cache that uses all the remaining address bits for the tag, the BTB uses a subset of the remaining bits for the tag (i.e., a partial tag). For example, in a 64-bit address space, if ADDR[11:0] is used for index, instead of using ADDR[63:12] for a tag, only a partial number of bits such as ADDR[31:12] is used as the tag. The reasons for this choice are as follows: First, compared to a data cache, the BTB’s size is very small, and the overhead of complete tags can be very high. Second, the higher-order bits typically tend to be the same within a program. Third, unlike a cache, which needs to maintain an accurate microarchitectural state, the BTB is just a predictor. Even if a partial tag hit results in a false BTB hit, the correct target will be computed at the execution stage and the pipeline will roll back if the prediction is wrong (i.e., it affects only performance, not correctness.)</p>
-<p><strong>Static and dynamic branch prediction</strong>. <em>Static branch prediction</em> is a default rule for predicting the next instruction after a branch instruction when there is no history. First, the processor predicts that a forward conditional branch—a conditional branch whose target address is higher than itself—will <em>not be taken</em>, which means the next instruction will be directly fetched (i.e., a fall-through path). Second, the processor predicts that a backward conditional branch—a conditional branch whose target address is lower than itself—will <em>be taken</em>; that is, the specified target will be fetched. Third, the processor predicts that an indirect branch will <em>not be taken</em>, similar to the forward conditional branch case. Fourth, the processor predicts that an unconditional branch will <em>be taken</em>, similar to the backward conditional branch case. In contrast, when a branch has a history in the BTB, the processor will predict the next instruction according to the history. This procedure is known as <em>dynamic branch prediction</em>.</p>
+<h4 id="meltdown">Meltdown</h4>
+<h5 id="spectre">Spectre</h5>
+<h5 id="l1-and-l2-cache-side-channel">L1 and L2 Cache Side Channel</h5>
+<p>Prime-and-Probe</p>
+<h5 id="llc-side-channel">LLC Side Channel</h5>
+<h4 id="branch-prediction">Branch Prediction</h4>
+<p>Branch prediction is one of the most important features of modern
+pipelined processors. At a high level, an instruction pipeline consists
+of four major stages: fetch, decode, execute, and write-back. At any
+given time, there are a number of instructions in-flight in the
+pipeline. Pro- cessors exploit instruction-level parallelism and
+out-of-order execution to maximize the throughput while still
+maintaining in-order retirement of instructions. Branch instructions can
+severely reduce instruction throughput since the processor cannot
+execute past the branch until the branch’s target and outcome are
+determined. Unless mitigated, branches would lead to pipeline stalls,
+also known as bubbles. Hence, modern processors use a branch prediction
+unit (BPU) to <em>predict</em> branch outcomes and branch targets. While
+the BPU increases throughput in general, it is worth noting that in the
+case of a misprediction, there is a pretty high penalty because the
+processor needs to clear the pipeline and roll back any speculative
+execution results. This is why Intel provides a dedicated hardware
+feature (the LBR) to profile branch execution</p>
+<p><strong>Branch and branch target prediction.</strong> <em>Branch
+prediction</em> is a procedure to predict the next instruction of a
+conditional branch by guessing whether it will be taken. <em>Branch
+target prediction</em> is a procedure to predict and fetch the target
+instruction of a branch before executing it. For branch target
+prediction, modern processors have the BTB to store the computed target
+addresses of taken branch instructions and fetch them when the
+corresponding branch instructions are predicted as taken.</p>
+<p><strong>BTB structure and partial tag hit.</strong> The BTB is an
+associative structure that resembles a cache. Address bits are used to
+compute the set index and tag fields. The number of bits used for set
+index is determined by the size of the BTB. Unlike a cache that uses all
+the remaining address bits for the tag, the BTB uses a subset of the
+remaining bits for the tag (i.e., a partial tag). For example, in a
+64-bit address space, if ADDR[11:0] is used for index, instead of using
+ADDR[63:12] for a tag, only a partial number of bits such as ADDR[31:12]
+is used as the tag. The reasons for this choice are as follows: First,
+compared to a data cache, the BTB’s size is very small, and the overhead
+of complete tags can be very high. Second, the higher-order bits
+typically tend to be the same within a program. Third, unlike a cache,
+which needs to maintain an accurate microarchitectural state, the BTB is
+just a predictor. Even if a partial tag hit results in a false BTB hit,
+the correct target will be computed at the execution stage and the
+pipeline will roll back if the prediction is wrong (i.e., it affects
+only performance, not correctness.)</p>
+<p><strong>Static and dynamic branch prediction</strong>. <em>Static
+branch prediction</em> is a default rule for predicting the next
+instruction after a branch instruction when there is no history. First,
+the processor predicts that a forward conditional branch—a conditional
+branch whose target address is higher than itself—will <em>not be
+taken</em>, which means the next instruction will be directly fetched
+(i.e., a fall-through path). Second, the processor predicts that a
+backward conditional branch—a conditional branch whose target address is
+lower than itself—will <em>be taken</em>; that is, the specified target
+will be fetched. Third, the processor predicts that an indirect branch
+will <em>not be taken</em>, similar to the forward conditional branch
+case. Fourth, the processor predicts that an unconditional branch will
+<em>be taken</em>, similar to the backward conditional branch case. In
+contrast, when a branch has a history in the BTB, the processor will
+predict the next instruction according to the history. This procedure is
+known as <em>dynamic branch prediction</em>.</p>
 
     </div>
 

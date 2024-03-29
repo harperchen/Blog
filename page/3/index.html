@@ -217,7 +217,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>One of the main limitations of evolutionary optimization algorithms is that they cannot leverage the structure (<em>i.e.</em>, gradients or other higher-order derivatives) of the underlying optimization problem. In this paper, we introduce a novel, efficient, and scalable program smoothing technique using feed-forward Neural Networks (NNs) that can incrementally learn smooth approximations of complex, real-world program branching behaviors, <em>i.e.</em>, predicting the control flow edges of the target program exercised by a particular given input. </p>
+          <p>One of the main limitations of evolutionary optimization algorithms
+is that they cannot leverage the structure (<em>i.e.</em>, gradients or
+other higher-order derivatives) of the underlying optimization problem.
+In this paper, we introduce a novel, efficient, and scalable program
+smoothing technique using feed-forward Neural Networks (NNs) that can
+incrementally learn smooth approximations of complex, real-world program
+branching behaviors, <em>i.e.</em>, predicting the control flow edges of
+the target program exercised by a particular given input.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/03/04/S-P-19-NEUZZ-Efficient-Fuzzing-with-Neural-Program-Smoothing/#more" rel="contents">
@@ -300,8 +307,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Fuzzing and symbolic execution are two complementary techniques for discovering software vulnerabilities. Fuzzing is fast and scalable, but can be ineffective when it fails to randomly select the right inputs. Symbolic execution is thorough but slow and often does not scale to deep program paths with complex path conditions.</p>
-<p>In this work, we propose to learn an effective and fast fuzzer from symbolic execution, by phrasing the learning task in the framework of imitation learning. During learning, a symbolic execution expert generates a large number of quality inputs improving coverage on thousands of programs. Then, a fuzzing policy, represented with a suitable architecture of neural networks, is trained on the generated dataset. The learned policy can then be used to fuzz new programs.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Fuzzing and symbolic execution are two complementary techniques for
+discovering software vulnerabilities. Fuzzing is fast and scalable, but
+can be ineffective when it fails to randomly select the right inputs.
+Symbolic execution is thorough but slow and often does not scale to deep
+program paths with complex path conditions.</p>
+<p>In this work, we propose to learn an effective and fast fuzzer from
+symbolic execution, by phrasing the learning task in the framework of
+imitation learning. During learning, a symbolic execution expert
+generates a large number of quality inputs improving coverage on
+thousands of programs. Then, a fuzzing policy, represented with a
+suitable architecture of neural networks, is trained on the generated
+dataset. The learned policy can then be used to fuzz new programs.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/02/23/CCS-19-Learning-to-Fuzz-from-Symbolic-Execution-with-Application-to-Smart-Contracts/#more" rel="contents">
@@ -384,9 +402,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h5 id="readelf"><a href="#readelf" class="headerlink" title="readelf"></a>readelf</h5><p>readelf is used to detect virtual memory offset.</p>
+          <h5 id="readelf">readelf</h5>
+<p>readelf is used to detect virtual memory offset.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readelf -SW vmlinux</span><br></pre></td></tr></table></figure>
-
 <p>The meaning of the flags is as follows:</p>
 <ul>
 <li>-S - list section headers in the kernel image file</li>
@@ -483,7 +501,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Operating system kernels are appealing attack targets: compromising the kernel usually allows attackers to bypass all deployed security mechanisms and take control over the entire system. Commodity kernels, like Linux, are written in low-level programming languages that offer only limited type and memory-safety guarantees, enabling adversaries to launch sophisticated run-time attacks against the kernel by exploiting memory-corruption vulnerabilities.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Operating system kernels are appealing attack targets: compromising
+the kernel usually allows attackers to bypass all deployed security
+mechanisms and take control over the entire system. Commodity kernels,
+like Linux, are written in low-level programming languages that offer
+only limited type and memory-safety guarantees, enabling adversaries to
+launch sophisticated run-time attacks against the kernel by exploiting
+memory-corruption vulnerabilities.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/02/01/NDSS-18-K-miner-Uncovering-memory-corruption-in-linux/#more" rel="contents">
@@ -575,7 +600,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>OS fuzzers primarily test the system-call interface between the OS kernel and user-level applications for security vulnerabilities. The effectiveness of all existing evolutionary OS fuzzers depends heavily on the quality and diversity of their seed system call sequences. However, generating good seeds for OS fuzzing is a hard problem as the behavior of each system call depends heavily on the OS kernel state created by the previously executed system calls. Therefore, popular evolutionary OS fuzzers often rely on hand-coded rules for generating valid seed sequences of system calls that can bootstrap the fuzzing process. Unfortunately, this approach severely restricts the diversity of the seed system call sequences and therefore limits the effectiveness of the fuzzers.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>OS fuzzers primarily test the system-call interface between the OS
+kernel and user-level applications for security vulnerabilities. The
+effectiveness of all existing evolutionary OS fuzzers depends heavily on
+the quality and diversity of their seed system call sequences. However,
+generating good seeds for OS fuzzing is a hard problem as the behavior
+of each system call depends heavily on the OS kernel state created by
+the previously executed system calls. Therefore, popular evolutionary OS
+fuzzers often rely on hand-coded rules for generating valid seed
+sequences of system calls that can bootstrap the fuzzing process.
+Unfortunately, this approach severely restricts the diversity of the
+seed system call sequences and therefore limits the effectiveness of the
+fuzzers.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/01/30/USENIX-18-MoonShine-Optimizing-OS-Fuzzer-Seed-Selection-with-Trace-Distillation/#more" rel="contents">
@@ -667,7 +704,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Hybrid fuzzing, combining symbolic execution and fuzzing, is a promising approach for vulnerability discovery because each approach can complement the other. However, we observe that applying hybrid fuzzing to kernel testing is challenging because the following unique characteristics of the kernel make a naive adoption of hybrid fuzzing inefficient: 1) having indirect control transfers determined by system call arguments, 2) controlling and matching internal system state via system calls, and 3) inferring nested argument type for invoking system calls. Failure to handling such challenges will render both fuzzing and symbolic execution inefficient, and thereby, will result in an inefficient hybrid fuzzing. Although these challenges are essential to both fuzzing and symbolic execution, to the best of our knowledge, existing kernel testing approaches either naively use each technique separately without handling such challenges or imprecisely handle a part of challenges only by static analysis.</p>
+          <h3 id="abstract">Abstract</h3>
+<p>Hybrid fuzzing, combining symbolic execution and fuzzing, is a
+promising approach for vulnerability discovery because each approach can
+complement the other. However, we observe that applying hybrid fuzzing
+to kernel testing is challenging because the following unique
+characteristics of the kernel make a naive adoption of hybrid fuzzing
+inefficient: 1) having indirect control transfers determined by system
+call arguments, 2) controlling and matching internal system state via
+system calls, and 3) inferring nested argument type for invoking system
+calls. Failure to handling such challenges will render both fuzzing and
+symbolic execution inefficient, and thereby, will result in an
+inefficient hybrid fuzzing. Although these challenges are essential to
+both fuzzing and symbolic execution, to the best of our knowledge,
+existing kernel testing approaches either naively use each technique
+separately without handling such challenges or imprecisely handle a part
+of challenges only by static analysis.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/01/24/NDSS-20-HFL-Hybrid-Fuzzing-on-the-Linux-Kernel/#more" rel="contents">
@@ -751,6 +803,7 @@
     
     <div class="post-body" itemprop="articleBody">
           
+
       
     </div>
 
@@ -825,8 +878,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-ASAN"><a href="#1-ASAN" class="headerlink" title="1. ASAN"></a>1. ASAN</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904111570157575">https://juejin.cn/post/6844904111570157575</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.ndss-symposium.org/wp-content/uploads/2018/02/ndss2018_05A-5_Han_paper.pdf">https://www.ndss-symposium.org/wp-content/uploads/2018/02/ndss2018_05A-5_Han_paper.pdf</a></p>
+          <h3 id="asan">1. ASAN</h3>
+<p>https://juejin.cn/post/6844904111570157575</p>
+<p>https://www.ndss-symposium.org/wp-content/uploads/2018/02/ndss2018_05A-5_Han_paper.pdf</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/01/10/Memory-Safety/#more" rel="contents">
@@ -909,9 +963,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-ASAN"><a href="#1-ASAN" class="headerlink" title="1. ASAN"></a>1. ASAN</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904111570157575">https://juejin.cn/post/6844904111570157575</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.ndss-symposium.org/wp-content/uploads/2018/02/ndss2018_05A-5_Han_paper.pdf">https://www.ndss-symposium.org/wp-content/uploads/2018/02/ndss2018_05A-5_Han_paper.pdf</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a2df9b7c353">https://www.jianshu.com/p/3a2df9b7c353</a></p>
+          <h3 id="asan">1. ASAN</h3>
+<p>https://juejin.cn/post/6844904111570157575</p>
+<p>https://www.ndss-symposium.org/wp-content/uploads/2018/02/ndss2018_05A-5_Han_paper.pdf</p>
+<p>https://www.jianshu.com/p/3a2df9b7c353</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/01/10/Tech-Memory-Safety/#more" rel="contents">
@@ -994,12 +1049,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-查看LLVM-IR"><a href="#1-查看LLVM-IR" class="headerlink" title="1. 查看LLVM IR"></a>1. 查看LLVM IR</h3><p>使用LLVM的编译流程：源码 -&gt; AST -&gt; LLVM IR (<code>.ll</code>)-&gt; LLVM Bitcode (<code>.bc</code>) -&gt; ASM -&gt; Native</p>
+          <h3 id="查看llvm-ir">1. 查看LLVM IR</h3>
+<p>使用LLVM的编译流程：源码 -&gt; AST -&gt; LLVM IR
+(<code>.ll</code>)-&gt; LLVM Bitcode (<code>.bc</code>) -&gt; ASM -&gt;
+Native</p>
 <ul>
-<li><code>llvm-as</code>：把LLVM IR从人类能看懂的文本格式汇编成二进制格式。注意：此处得到的<strong>不是</strong>目标平台的机器码。</li>
-<li><code>llvm-dis</code>：<code>llvm-as</code>的逆过程，即反汇编。 不过这里的反汇编的对象是LLVM IR的二进制格式，而不是机器码。</li>
+<li><code>llvm-as</code>：把LLVM
+IR从人类能看懂的文本格式汇编成二进制格式。注意：此处得到的<strong>不是</strong>目标平台的机器码。</li>
+<li><code>llvm-dis</code>：<code>llvm-as</code>的逆过程，即反汇编。
+不过这里的反汇编的对象是LLVM IR的二进制格式，而不是机器码。</li>
 <li><code>opt</code>：优化LLVM IR。输出新的LLVM IR。</li>
-<li><code>llc</code>：把LLVM IR编译成汇编码。需要用<code>as</code>进一步得到机器码。</li>
+<li><code>llc</code>：把LLVM
+IR编译成汇编码。需要用<code>as</code>进一步得到机器码。</li>
 <li><code>lli</code>：解释执行LLVM IR</li>
 </ul>
           <!--noindex-->

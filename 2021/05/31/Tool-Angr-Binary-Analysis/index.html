@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="Workflow Binary Lifting libVEX : Binary Code  to VEX IR Binary Loading CLE : load binary with differernt formats Resolve dynamic symbol Perform relocation Initialize program state   Program State Repr">
+    <meta name="description" content="Workflow  Binary Lifting libVEX : Binary Code to VEX IR Binary Loading CLE : load binary with differernt formats  Resolve dynamic symbol Perform relocation Initialize program state  Program State Repr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Tool] Angr Binary Analysis">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/05/31/Tool-Angr-Binary-Analysis/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="Workflow Binary Lifting libVEX : Binary Code  to VEX IR Binary Loading CLE : load binary with differernt formats Resolve dynamic symbol Perform relocation Initialize program state   Program State Repr">
+<meta property="og:description" content="Workflow  Binary Lifting libVEX : Binary Code to VEX IR Binary Loading CLE : load binary with differernt formats  Resolve dynamic symbol Perform relocation Initialize program state  Program State Repr">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-31T09:42:33.000Z">
 <meta property="article:modified_time" content="2024-03-27T08:54:00.984Z">
@@ -111,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Workflow"><span class="nav-number">1.</span> <span class="nav-text">Workflow</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#workflow"><span class="nav-number">1.</span> <span class="nav-text">Workflow</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,18 +220,22 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h3><ul>
-<li>Binary Lifting <em><strong>libVEX</strong></em> : Binary Code  to VEX IR</li>
-<li>Binary Loading <em><strong>CLE</strong></em> : load binary with differernt formats<ul>
+    <div class="post-body" itemprop="articleBody"><h3 id="workflow">Workflow</h3>
+<ul>
+<li>Binary Lifting <strong><em>libVEX</em></strong> : Binary Code to VEX
+IR</li>
+<li>Binary Loading <strong><em>CLE</em></strong> : load binary with
+differernt formats
+<ul>
 <li>Resolve dynamic symbol</li>
 <li>Perform relocation</li>
 <li>Initialize program state</li>
-</ul>
-</li>
-<li>Program State Representation: <em><strong>SimuVEX</strong></em><ul>
-<li>Program state (<em><strong>SimState</strong></em>) is a snapshot of values in registers and memory, open files, etc.</li>
-</ul>
-</li>
+</ul></li>
+<li>Program State Representation: <strong><em>SimuVEX</em></strong>
+<ul>
+<li>Program state (<strong><em>SimState</em></strong>) is a snapshot of
+values in registers and memory, open files, etc.</li>
+</ul></li>
 </ul>
 
     </div>

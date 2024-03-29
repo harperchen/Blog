@@ -19,14 +19,13 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="Static Value-Flow Analysis FrameworkA scalable, precise and on-demand interprocedural program dependence analysis framework for both sequential and multithreaded programs. Value-Flow Analysis resolves">
+    <meta name="description" content="Static Value-Flow Analysis Framework A scalable, precise and on-demand interprocedural program dependence analysis framework for both sequential and multithreaded programs. Value-Flow Analysis  resolv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Tool] SVF Static Analysis">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/06/04/Tool-SVF-Static-Analysis/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="Static Value-Flow Analysis FrameworkA scalable, precise and on-demand interprocedural program dependence analysis framework for both sequential and multithreaded programs. Value-Flow Analysis resolves">
+<meta property="og:description" content="Static Value-Flow Analysis Framework A scalable, precise and on-demand interprocedural program dependence analysis framework for both sequential and multithreaded programs. Value-Flow Analysis  resolv">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://harperchen.github.io/blog/Users/harper/Library/Application%20Support/typora-user-images/image-20210607195801671.png">
 <meta property="og:image" content="https://i.loli.net/2021/06/07/nIRUL8qgzKxOmXJ.png">
 <meta property="og:image" content="https://i.loli.net/2021/06/07/CWpEsfQReHiLzbk.png">
 <meta property="og:image" content="https://i.loli.net/2021/06/06/XpNQozKEw1DdCRL.png">
@@ -37,7 +36,7 @@
 <meta property="article:modified_time" content="2024-03-27T05:21:36.069Z">
 <meta property="article:author" content="Wei CHEN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://harperchen.github.io/blog/Users/harper/Library/Application%20Support/typora-user-images/image-20210607195801671.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/06/07/nIRUL8qgzKxOmXJ.png">
 
 
 <link rel="canonical" href="https://harperchen.github.io/blog/2021/06/04/Tool-SVF-Static-Analysis/">
@@ -119,7 +118,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-Value-Flow-Analysis-Framework"><span class="nav-number">1.</span> <span class="nav-text">Static Value-Flow Analysis Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Value-Flow-Analysis"><span class="nav-number">1.0.1.</span> <span class="nav-text">Value-Flow Analysis</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Key-features-of-SVF"><span class="nav-number">1.1.</span> <span class="nav-text">Key features of SVF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client-applications"><span class="nav-number">1.2.</span> <span class="nav-text">Client applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Several-terms-in-static-analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Several terms in static analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-Representation-of-Code"><span class="nav-number">1.4.</span> <span class="nav-text">Graph Representation of Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pointer-to-Analysis"><span class="nav-number">1.5.</span> <span class="nav-text">Pointer-to Analysis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tool-Usage"><span class="nav-number">2.</span> <span class="nav-text">Tool Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SVF"><span class="nav-number">2.1.</span> <span class="nav-text">SVF</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Install"><span class="nav-number">2.1.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Usage"><span class="nav-number">2.1.2.</span> <span class="nav-text">Usage</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Infer"><span class="nav-number">2.2.</span> <span class="nav-text">Infer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Clang-Static-Analyzer"><span class="nav-number">2.3.</span> <span class="nav-text">Clang Static Analyzer</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#static-value-flow-analysis-framework"><span class="nav-number">1.</span> <span class="nav-text">Static Value-Flow Analysis
+Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#value-flow-analysis"><span class="nav-number">1.0.1.</span> <span class="nav-text">Value-Flow Analysis</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key-features-of-svf"><span class="nav-number">1.1.</span> <span class="nav-text">Key features of SVF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#client-applications"><span class="nav-number">1.2.</span> <span class="nav-text">Client applications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#several-terms-in-static-analysis"><span class="nav-number">1.3.</span> <span class="nav-text">Several terms in static
+analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#graph-representation-of-code"><span class="nav-number">1.4.</span> <span class="nav-text">Graph Representation of Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pointer-to-analysis"><span class="nav-number">1.5.</span> <span class="nav-text">Pointer-to Analysis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tool-usage"><span class="nav-number">2.</span> <span class="nav-text">Tool Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#svf"><span class="nav-number">2.1.</span> <span class="nav-text">SVF</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#install"><span class="nav-number">2.1.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#usage"><span class="nav-number">2.1.2.</span> <span class="nav-text">Usage</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#infer"><span class="nav-number">2.2.</span> <span class="nav-text">Infer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clang-static-analyzer"><span class="nav-number">2.3.</span> <span class="nav-text">Clang Static Analyzer</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,77 +229,131 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Static-Value-Flow-Analysis-Framework"><a href="#Static-Value-Flow-Analysis-Framework" class="headerlink" title="Static Value-Flow Analysis Framework"></a>Static Value-Flow Analysis Framework</h3><p>A scalable, precise and on-demand interprocedural program dependence analysis framework for both sequential and multithreaded programs.</p>
-<h5 id="Value-Flow-Analysis"><a href="#Value-Flow-Analysis" class="headerlink" title="Value-Flow Analysis"></a>Value-Flow Analysis</h5><ul>
-<li>resolves both control and data dependence. <ul>
-<li>Does the information generated at program point A flow to another program point B along some execution paths? </li>
-<li>Can function F be called either directly or indirectly from some other function F 0? </li>
-<li>Is there an unsafe memory access that may trigger a bug or security risk?</li>
+    <div class="post-body" itemprop="articleBody"><h3 id="static-value-flow-analysis-framework">Static Value-Flow Analysis
+Framework</h3>
+<p>A scalable, precise and on-demand interprocedural program dependence
+analysis framework for both sequential and multithreaded programs.</p>
+<h5 id="value-flow-analysis">Value-Flow Analysis</h5>
+<ul>
+<li>resolves both control and data dependence.
+<ul>
+<li>Does the information generated at program point A flow to another
+program point B along some execution paths?</li>
+<li>Can function F be called either directly or indirectly from some
+other function F 0?</li>
+<li>Is there an unsafe memory access that may trigger a bug or security
+risk?</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h4 id="Key-features-of-SVF"><a href="#Key-features-of-SVF" class="headerlink" title="Key features of SVF"></a>Key features of SVF</h4><ul>
-<li>Sparse: compute and maintain the data-flow facts where necessary</li>
-<li>Selective : support mixed analyses for precision and efficiency trade-offs</li>
+<h4 id="key-features-of-svf">Key features of SVF</h4>
+<ul>
+<li>Sparse: compute and maintain the data-flow facts where
+necessary</li>
+<li>Selective : support mixed analyses for precision and efficiency
+trade-offs</li>
 <li>On-demand : reason about program parts based on user queries.</li>
 </ul>
 <span id="more"></span>
-<h4 id="Client-applications"><a href="#Client-applications" class="headerlink" title="Client applications"></a>Client applications</h4><ul>
-<li>Static bug detection (e.g., memory leaks, null dereferences, use-after-frees and data-races) </li>
-<li>Accelerate dynamic analysis (e.g., Google’s Sanitizers and AFL fuzzing)</li>
+<h4 id="client-applications">Client applications</h4>
+<ul>
+<li>Static bug detection (e.g., memory leaks, null dereferences,
+use-after-frees and data-races)</li>
+<li>Accelerate dynamic analysis (e.g., Google’s Sanitizers and AFL
+fuzzing)</li>
 </ul>
-<h4 id="Several-terms-in-static-analysis"><a href="#Several-terms-in-static-analysis" class="headerlink" title="Several terms in static analysis"></a>Several terms in static analysis</h4><ul>
+<h4 id="several-terms-in-static-analysis">Several terms in static
+analysis</h4>
+<ul>
 <li>Flow-sensitive</li>
 <li>Context-sensitive</li>
 <li>Heap-sensitive</li>
 <li>Field-sensitive</li>
 </ul>
-<p><img src="/blog/Users/harper/Library/Application%20Support/typora-user-images/image-20210607195801671.png" alt="image-20210607195801671"></p>
-<p><img src="https://i.loli.net/2021/06/07/nIRUL8qgzKxOmXJ.png" alt="image-20210607200429237"></p>
-<h4 id="Graph-Representation-of-Code"><a href="#Graph-Representation-of-Code" class="headerlink" title="Graph Representation of Code"></a>Graph Representation of Code</h4><p>Representing a program’s control-flow (i.e., execution order) and&#x2F;or data-flow (variable definition and use relations) using nodes and edges of a graph.</p>
+<figure>
+<img
+src="/Users/harper/Library/Application%20Support/typora-user-images/image-20210607195801671.png"
+alt="image-20210607195801671" />
+<figcaption aria-hidden="true">image-20210607195801671</figcaption>
+</figure>
+<figure>
+<img src="https://i.loli.net/2021/06/07/nIRUL8qgzKxOmXJ.png"
+alt="image-20210607200429237" />
+<figcaption aria-hidden="true">image-20210607200429237</figcaption>
+</figure>
+<h4 id="graph-representation-of-code">Graph Representation of Code</h4>
+<p>Representing a program’s control-flow (i.e., execution order) and/or
+data-flow (variable definition and use relations) using nodes and edges
+of a graph.</p>
 <ul>
 <li>Call graph: Program calling relations between methods</li>
-<li>Control flow graph: Program execution order between two instructions.<ul>
-<li>Intra-procedural control-flow graph: control-flow graph within a program method. </li>
-<li>Inter-procedural control-flow graph: control-flow graph across program methods. (ICFG)</li>
-</ul>
-</li>
+<li>Control flow graph: Program execution order between two
+instructions.
+<ul>
+<li>Intra-procedural control-flow graph: control-flow graph within a
+program method.</li>
+<li>Inter-procedural control-flow graph: control-flow graph across
+program methods. (ICFG)</li>
+</ul></li>
 <li>Constraint graph</li>
 <li>Program assignment graph</li>
 </ul>
-<h4 id="Pointer-to-Analysis"><a href="#Pointer-to-Analysis" class="headerlink" title="Pointer-to Analysis"></a>Pointer-to Analysis</h4><p><strong>Andersen’s analysis</strong>, a flow-insensitive, context-insensitive and path-insensitive Andersen’s analysis through analyzing the Constraint Graph of a program</p>
-<p><img src="https://i.loli.net/2021/06/07/CWpEsfQReHiLzbk.png" alt="image-20210607212140340"></p>
-<h3 id="Tool-Usage"><a href="#Tool-Usage" class="headerlink" title="Tool Usage"></a>Tool Usage</h3><p><a target="_blank" rel="noopener" href="https://github.com/obfuscator-llvm/obfuscator/wiki">https://github.com/obfuscator-llvm/obfuscator/wiki</a></p>
-<p><img src="https://i.loli.net/2021/06/06/XpNQozKEw1DdCRL.png" alt="image-20210606215243456"></p>
-<h4 id="SVF"><a href="#SVF" class="headerlink" title="SVF"></a>SVF</h4><h5 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/SVF-tools/SVF.git</span><br><span class="line"><span class="built_in">cd</span> SVF</span><br><span class="line"><span class="built_in">source</span> ./build.sh</span><br></pre></td></tr></table></figure>
-
-<h5 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h5><h4 id="Infer"><a href="#Infer" class="headerlink" title="Infer"></a>Infer</h4><p>Install</p>
+<h4 id="pointer-to-analysis">Pointer-to Analysis</h4>
+<p><strong>Andersen’s analysis</strong>, a flow-insensitive,
+context-insensitive and path-insensitive Andersen’s analysis through
+analyzing the Constraint Graph of a program</p>
+<figure>
+<img src="https://i.loli.net/2021/06/07/CWpEsfQReHiLzbk.png"
+alt="image-20210607212140340" />
+<figcaption aria-hidden="true">image-20210607212140340</figcaption>
+</figure>
+<h3 id="tool-usage">Tool Usage</h3>
+<p>https://github.com/obfuscator-llvm/obfuscator/wiki</p>
+<figure>
+<img src="https://i.loli.net/2021/06/06/XpNQozKEw1DdCRL.png"
+alt="image-20210606215243456" />
+<figcaption aria-hidden="true">image-20210606215243456</figcaption>
+</figure>
+<h4 id="svf">SVF</h4>
+<h5 id="install">Install</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/SVF-tools/SVF.git</span><br><span class="line"><span class="built_in">cd</span> SVF</span><br><span class="line"><span class="built_in">source</span> ./build.sh</span><br></pre></td></tr></table></figure>
+<h5 id="usage">Usage</h5>
+<h4 id="infer">Infer</h4>
+<p>Install</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VERSION=1.0.0; \</span><br><span class="line">curl -sSL <span class="string">&quot;https://github.com/facebook/infer/releases/download/v<span class="variable">$VERSION</span>/infer-linux64-v<span class="variable">$VERSION</span>.tar.xz&quot;</span> \</span><br><span class="line">| sudo tar -C /opt -xJ &amp;&amp; \</span><br><span class="line">sudo <span class="built_in">ln</span> -s <span class="string">&quot;/opt/infer-linux64-v<span class="variable">$VERSION</span>/bin/infer&quot;</span> /usr/local/bin/infer</span><br></pre></td></tr></table></figure>
-
 <p>Usage</p>
 <p>Here is a simple Java example to illustrate Infer at work.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Hello.java</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">  <span class="type">int</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> s.length();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>To run Infer, type the following in your terminal from the same directory as <a target="_blank" rel="noopener" href="https://github.com/facebook/infer/tree/master/examples/Hello.java"><code>Hello.java</code></a>.</p>
+<p>To run Infer, type the following in your terminal from the same
+directory as <a
+target="_blank" rel="noopener" href="https://github.com/facebook/infer/tree/master/examples/Hello.java"><code>Hello.java</code></a>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">infer run -- javac Hello.java</span><br></pre></td></tr></table></figure>
-
 <p>You should see the following error reported by Infer.</p>
-<p><img src="https://i.loli.net/2021/06/07/tmBrjayU6EQ23NI.png" alt="image-20210607214530159"></p>
+<figure>
+<img src="https://i.loli.net/2021/06/07/tmBrjayU6EQ23NI.png"
+alt="image-20210607214530159" />
+<figcaption aria-hidden="true">image-20210607214530159</figcaption>
+</figure>
 <p>Here is a simple C example to illustrate Infer at work.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello.c</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> *s = <span class="literal">NULL</span>;</span><br><span class="line">    *s = <span class="number">42</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>To run Infer, type the following in your terminal from the same directory as <a target="_blank" rel="noopener" href="https://github.com/facebook/infer/tree/master/examples/hello.c"><code>hello.c</code></a>.</p>
+<p>To run Infer, type the following in your terminal from the same
+directory as <a
+target="_blank" rel="noopener" href="https://github.com/facebook/infer/tree/master/examples/hello.c"><code>hello.c</code></a>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">infer run -- gcc -c hello.c</span><br></pre></td></tr></table></figure>
-
 <p>You should see the following error reported by Infer.</p>
-<p><img src="https://i.loli.net/2021/06/07/qmXfM9OZxJkI5lE.png" alt="image-20210607214848546"></p>
-<h4 id="Clang-Static-Analyzer"><a href="#Clang-Static-Analyzer" class="headerlink" title="Clang Static Analyzer"></a>Clang Static Analyzer</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;  </span><br><span class="line">  <span class="type">int</span> *mem;  </span><br><span class="line">  mem = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));  </span><br><span class="line">  <span class="keyword">if</span>(mem) &#123; </span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  *mem = <span class="number">0xdeadbeaf</span>;  </span><br><span class="line">  <span class="built_in">free</span>(mem);  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/06/07/X2UZhFBRkyLJNYm.png" alt="image-20210607220047699"></p>
+<figure>
+<img src="https://i.loli.net/2021/06/07/qmXfM9OZxJkI5lE.png"
+alt="image-20210607214848546" />
+<figcaption aria-hidden="true">image-20210607214848546</figcaption>
+</figure>
+<h4 id="clang-static-analyzer">Clang Static Analyzer</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;  </span><br><span class="line">  <span class="type">int</span> *mem;  </span><br><span class="line">  mem = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>));  </span><br><span class="line">  <span class="keyword">if</span>(mem) &#123; </span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  *mem = <span class="number">0xdeadbeaf</span>;  </span><br><span class="line">  <span class="built_in">free</span>(mem);  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://i.loli.net/2021/06/07/X2UZhFBRkyLJNYm.png"
+alt="image-20210607220047699" />
+<figcaption aria-hidden="true">image-20210607220047699</figcaption>
+</figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;num&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;Path1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;msg msgEvent&quot;</span> <span class="attr">style</span>=<span class="string">&quot;margin-left:9ex&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;msgT&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">valign</span>=<span class="string">&quot;top&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;PathIndex PathIndexEvent&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#x27;twoIntsStructPointer&#x27; initialized to a null pointer value<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;PathNav&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#EndPath&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Next event (2)&quot;</span>&gt;</span><span class="symbol">&amp;#x2192;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;num&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;EndPath&quot;</span> <span class="attr">class</span>=<span class="string">&quot;msg msgEvent&quot;</span> <span class="attr">style</span>=<span class="string">&quot;margin-left:47ex&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;msgT&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span> <span class="attr">valign</span>=<span class="string">&quot;top&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;PathIndex PathIndexEvent&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;PathNav&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#Path1&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Previous event (1)&quot;</span>&gt;</span><span class="symbol">&amp;#x2190;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>Access to field &#x27;intOne&#x27; results in a dereference of a null pointer (loaded from variable &#x27;twoIntsStructPointer&#x27;)<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 
     </div>
 

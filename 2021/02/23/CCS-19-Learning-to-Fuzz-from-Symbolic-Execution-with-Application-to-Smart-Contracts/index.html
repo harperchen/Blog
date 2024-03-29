@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="AbstractFuzzing and symbolic execution are two complementary techniques for discovering software vulnerabilities. Fuzzing is fast and scalable, but can be ineffective when it fails to randomly select">
+    <meta name="description" content="Abstract Fuzzing and symbolic execution are two complementary techniques for discovering software vulnerabilities. Fuzzing is fast and scalable, but can be ineffective when it fails to randomly select">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[CCS&#39;19] Learning to Fuzz from Symbolic Execution with Application to Smart Contracts">
 <meta property="og:url" content="https://harperchen.github.io/blog/2021/02/23/CCS-19-Learning-to-Fuzz-from-Symbolic-Execution-with-Application-to-Smart-Contracts/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="AbstractFuzzing and symbolic execution are two complementary techniques for discovering software vulnerabilities. Fuzzing is fast and scalable, but can be ineffective when it fails to randomly select">
+<meta property="og:description" content="Abstract Fuzzing and symbolic execution are two complementary techniques for discovering software vulnerabilities. Fuzzing is fast and scalable, but can be ineffective when it fails to randomly select">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/02/23/uZf1l9tknhpWBJ5.png">
 <meta property="og:image" content="https://i.loli.net/2021/02/23/2lEPZTMSX3cJgA4.png">
@@ -116,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline"><span class="nav-number">2.</span> <span class="nav-text">Outline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">2.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Overview"><span class="nav-number">2.2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Architecture"><span class="nav-number">2.3.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MDP-Mapping"><span class="nav-number">2.4.</span> <span class="nav-text">MDP Mapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Network"><span class="nav-number">2.5.</span> <span class="nav-text">Network</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outline"><span class="nav-number">2.</span> <span class="nav-text">Outline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#summary"><span class="nav-number">2.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#overview"><span class="nav-number">2.2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#architecture"><span class="nav-number">2.3.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mdp-mapping"><span class="nav-number">2.4.</span> <span class="nav-text">MDP Mapping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#network"><span class="nav-number">2.5.</span> <span class="nav-text">Network</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,29 +225,67 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Fuzzing and symbolic execution are two complementary techniques for discovering software vulnerabilities. Fuzzing is fast and scalable, but can be ineffective when it fails to randomly select the right inputs. Symbolic execution is thorough but slow and often does not scale to deep program paths with complex path conditions.</p>
-<p>In this work, we propose to learn an effective and fast fuzzer from symbolic execution, by phrasing the learning task in the framework of imitation learning. During learning, a symbolic execution expert generates a large number of quality inputs improving coverage on thousands of programs. Then, a fuzzing policy, represented with a suitable architecture of neural networks, is trained on the generated dataset. The learned policy can then be used to fuzz new programs.</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="abstract">Abstract</h3>
+<p>Fuzzing and symbolic execution are two complementary techniques for
+discovering software vulnerabilities. Fuzzing is fast and scalable, but
+can be ineffective when it fails to randomly select the right inputs.
+Symbolic execution is thorough but slow and often does not scale to deep
+program paths with complex path conditions.</p>
+<p>In this work, we propose to learn an effective and fast fuzzer from
+symbolic execution, by phrasing the learning task in the framework of
+imitation learning. During learning, a symbolic execution expert
+generates a large number of quality inputs improving coverage on
+thousands of programs. Then, a fuzzing policy, represented with a
+suitable architecture of neural networks, is trained on the generated
+dataset. The learned policy can then be used to fuzz new programs.</p>
 <span id="more"></span>
-
-<p>We instantiate our approach to the problem of fuzzing smart contracts, a domain where contracts often implement similar func- tionality (facilitating learning) and security is of utmost importance. We present an end-to-end system, ILF (for Imitation Learning based Fuzzer), and an extensive evaluation over &gt;18K contracts. Our re- sults show that ILF is effective: (i) it is fast, generating 148 transac- tions per second, (ii) it outperforms existing fuzzers (e.g., achieving 33% more coverage), and (iii) it detects more vulnerabilities than existing fuzzing and symbolic execution tools for Ethereum.</p>
-<h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Fuzzing is simple but tends to be stuck after running for a while, whereas symbolic execution is thorough but slow and expensive-to-execute. The authors notice that the inputs generated by a symbolic execution expert can form a valuable knowledge base for fuzzer to learn how to generate high-quality inputs, hence propose to bring imitation learning into the context of program testing.</p>
-<p>Since smart contracts often implement similar functionality, the imitation learning based fuzzing idea is instantiated as a system so-called ILF on smart contracts. However, smart contracts are stateful programs, whose deep states can only be reached after executing a sequence of transactions in a valid order. Such features make pure fuzzing and symbolic execution technique struggle to achieve high coverage.</p>
-<p>To address such challenge, ILF first leverages symbolic execution to generate effective inputs as dataset, then trains a neural network on the dataset to play the role of fuzzer. Extensive evaluation shows that the learned fuzzer preserves fast inputs generation capability while becomes more effective even on unseen programs. Specifically, it achieves more coverage than the existing smart contract fuzzer and uncovers more vulnerabilities than both pure fuzzing and symbolic execution tools. </p>
-<p>Question: Could this system be enhanced with a coverage-guided policy? How to take care of the dependencies between transactions in a single sequence? Do they consider the influence between different sequences? For example, different sequences should cover different codes?</p>
-<h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><img src="https://i.loli.net/2021/02/23/uZf1l9tknhpWBJ5.png" alt="image-20210223211446867" style="zoom: 43%;" />
-
-
-
-<h4 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h4><img src="https://i.loli.net/2021/02/23/2lEPZTMSX3cJgA4.png" alt="image-20210223211516468" style="zoom:50%;" />
-
-<p>Github link: <a target="_blank" rel="noopener" href="https://github.com/eth-sri/ilf">https://github.com/eth-sri/ilf</a></p>
-<h4 id="MDP-Mapping"><a href="#MDP-Mapping" class="headerlink" title="MDP Mapping"></a>MDP Mapping</h4><img src="https://i.loli.net/2021/02/23/QcKj3V51tzUy9JC.png" alt="image-20210223214803060" style="zoom:50%;" />
-
-
-
-<h4 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h4><img src="https://i.loli.net/2021/02/23/LF3OjzqbxtlK6N9.png" alt="image-20210223224440731" style="zoom: 50%;" />
-
-<p>$f(\bar{x})$</p>
+<p>We instantiate our approach to the problem of fuzzing smart
+contracts, a domain where contracts often implement similar func-
+tionality (facilitating learning) and security is of utmost importance.
+We present an end-to-end system, ILF (for Imitation Learning based
+Fuzzer), and an extensive evaluation over &gt;18K contracts. Our re-
+sults show that ILF is effective: (i) it is fast, generating 148
+transac- tions per second, (ii) it outperforms existing fuzzers (e.g.,
+achieving 33% more coverage), and (iii) it detects more vulnerabilities
+than existing fuzzing and symbolic execution tools for Ethereum.</p>
+<h3 id="outline">Outline</h3>
+<h4 id="summary">Summary</h4>
+<p>Fuzzing is simple but tends to be stuck after running for a while,
+whereas symbolic execution is thorough but slow and
+expensive-to-execute. The authors notice that the inputs generated by a
+symbolic execution expert can form a valuable knowledge base for fuzzer
+to learn how to generate high-quality inputs, hence propose to bring
+imitation learning into the context of program testing.</p>
+<p>Since smart contracts often implement similar functionality, the
+imitation learning based fuzzing idea is instantiated as a system
+so-called ILF on smart contracts. However, smart contracts are stateful
+programs, whose deep states can only be reached after executing a
+sequence of transactions in a valid order. Such features make pure
+fuzzing and symbolic execution technique struggle to achieve high
+coverage.</p>
+<p>To address such challenge, ILF first leverages symbolic execution to
+generate effective inputs as dataset, then trains a neural network on
+the dataset to play the role of fuzzer. Extensive evaluation shows that
+the learned fuzzer preserves fast inputs generation capability while
+becomes more effective even on unseen programs. Specifically, it
+achieves more coverage than the existing smart contract fuzzer and
+uncovers more vulnerabilities than both pure fuzzing and symbolic
+execution tools.</p>
+<p>Question: Could this system be enhanced with a coverage-guided
+policy? How to take care of the dependencies between transactions in a
+single sequence? Do they consider the influence between different
+sequences? For example, different sequences should cover different
+codes?</p>
+<h4 id="overview">Overview</h4>
+<p><img src="https://i.loli.net/2021/02/23/uZf1l9tknhpWBJ5.png" alt="image-20210223211446867" style="zoom: 43%;" /></p>
+<h4 id="architecture">Architecture</h4>
+<p><img src="https://i.loli.net/2021/02/23/2lEPZTMSX3cJgA4.png" alt="image-20210223211516468" style="zoom:50%;" /></p>
+<p>Github link: https://github.com/eth-sri/ilf</p>
+<h4 id="mdp-mapping">MDP Mapping</h4>
+<p><img src="https://i.loli.net/2021/02/23/QcKj3V51tzUy9JC.png" alt="image-20210223214803060" style="zoom:50%;" /></p>
+<h4 id="network">Network</h4>
+<p><img src="https://i.loli.net/2021/02/23/LF3OjzqbxtlK6N9.png" alt="image-20210223224440731" style="zoom: 50%;" /></p>
+<p><span class="math inline">\(f(\bar{x})\)</span></p>
 <p>sender</p>
 <p>Amount</p>
 

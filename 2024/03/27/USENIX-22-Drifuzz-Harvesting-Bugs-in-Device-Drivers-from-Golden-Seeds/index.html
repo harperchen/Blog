@@ -19,12 +19,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
 
-    <meta name="description" content="AbstractPeripheral hardware in modern computers is typically assumed to be secure and not malicious, and device drivers are implemented in a way that trusts inputs from hardware. However, recent vulne">
+    <meta name="description" content="Abstract Peripheral hardware in modern computers is typically assumed to be secure and not malicious, and device drivers are implemented in a way that trusts inputs from hardware. However, recent vuln">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[USENIX&#39;22] Drifuzz: Harvesting Bugs in Device Drivers from Golden Seeds ">
 <meta property="og:url" content="https://harperchen.github.io/blog/2024/03/27/USENIX-22-Drifuzz-Harvesting-Bugs-in-Device-Drivers-from-Golden-Seeds/index.html">
 <meta property="og:site_name" content="Wei&#39;s Blog">
-<meta property="og:description" content="AbstractPeripheral hardware in modern computers is typically assumed to be secure and not malicious, and device drivers are implemented in a way that trusts inputs from hardware. However, recent vulne">
+<meta property="og:description" content="Abstract Peripheral hardware in modern computers is typically assumed to be secure and not malicious, and device drivers are implemented in a way that trusts inputs from hardware. However, recent vuln">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-27T08:15:16.000Z">
 <meta property="article:modified_time" content="2024-03-27T08:16:12.864Z">
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem"><span class="nav-number">2.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Existing-work"><span class="nav-number">3.</span> <span class="nav-text">Existing work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Novelty"><span class="nav-number">4.</span> <span class="nav-text">Novelty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Approach"><span class="nav-number">5.</span> <span class="nav-text">Approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Evaluation"><span class="nav-number">6.</span> <span class="nav-text">Evaluation</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#problem"><span class="nav-number">2.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#existing-work"><span class="nav-number">3.</span> <span class="nav-text">Existing work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#novelty"><span class="nav-number">4.</span> <span class="nav-text">Novelty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#approach"><span class="nav-number">5.</span> <span class="nav-text">Approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#evaluation"><span class="nav-number">6.</span> <span class="nav-text">Evaluation</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,11 +225,32 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>Peripheral hardware in modern computers is typically assumed to be secure and not malicious, and device drivers are implemented in a way that trusts inputs from hardware. However, recent vulnerabilities such as Broadpwn have demonstrated that attackers can exploit hosts through vulnerable peripherals, highlighting the importance of securing the OS-peripheral boundary. In this paper, we propose a hardware-free concolic-augmented fuzzer targeting WiFi and Ethernet drivers, and a technique for generating high-quality initial seeds, which we call golden seeds, that allow fuzzing to bypass difficult code constructs during driver initialization. Compared to prior work using symbolic execution or greybox fuzzing, Drifuzz is more successful at automatically finding inputs that allow network interfaces to be fully initialized, and improves fuzzing coverage by 214% (3.1×) in WiFi drivers and 60% (1.6×) for Ethernet drivers. During our experiments with fourteen PCI and USB network drivers, we find eleven previously unknown bugs, two of which were assigned CVEs.</p>
+    <div class="post-body" itemprop="articleBody"><h4 id="abstract">Abstract</h4>
+<p>Peripheral hardware in modern computers is typically assumed to be
+secure and not malicious, and device drivers are implemented in a way
+that trusts inputs from hardware. However, recent vulnerabilities such
+as Broadpwn have demonstrated that attackers can exploit hosts through
+vulnerable peripherals, highlighting the importance of securing the
+OS-peripheral boundary. In this paper, we propose a hardware-free
+concolic-augmented fuzzer targeting WiFi and Ethernet drivers, and a
+technique for generating high-quality initial seeds, which we call
+golden seeds, that allow fuzzing to bypass difficult code constructs
+during driver initialization. Compared to prior work using symbolic
+execution or greybox fuzzing, Drifuzz is more successful at
+automatically finding inputs that allow network interfaces to be fully
+initialized, and improves fuzzing coverage by 214% (3.1×) in WiFi
+drivers and 60% (1.6×) for Ethernet drivers. During our experiments with
+fourteen PCI and USB network drivers, we find eleven previously unknown
+bugs, two of which were assigned CVEs.</p>
 <span id="more"></span>
+<h4 id="problem">Problem</h4>
+<p>Device drivers are often written with the assumption that
+peripheral’s control interfaces are reliable</p>
+<h4 id="existing-work">Existing work</h4>
+<h4 id="novelty">Novelty</h4>
+<h4 id="approach">Approach</h4>
+<h4 id="evaluation">Evaluation</h4>
 
-<h4 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h4><p>Device drivers are often written with the assumption that peripheral’s control interfaces are reliable</p>
-<h4 id="Existing-work"><a href="#Existing-work" class="headerlink" title="Existing work"></a>Existing work</h4><h4 id="Novelty"><a href="#Novelty" class="headerlink" title="Novelty"></a>Novelty</h4><h4 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h4><h4 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h4>
     </div>
 
     
