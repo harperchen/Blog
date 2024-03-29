@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog/archives/">
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/blog/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -159,6 +159,91 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://harperchen.github.io/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/8.jpg">
+      <meta itemprop="name" content="Wei CHEN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei's Blog">
+      <meta itemprop="description" content="Be Brave; Be Confident; <br> Be Happy; Be Optimistic; ">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/" class="post-title-link" itemprop="url">[Tech] Joern Usage & MVP & APHP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-28 14:03:43" itemprop="dateCreated datePublished" datetime="2024-03-28T14:03:43+08:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-29 11:04:06" itemprop="dateModified" datetime="2024-03-29T11:04:06+08:00">2024-03-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="1-Joern-Background"><a href="#1-Joern-Background" class="headerlink" title="1. Joern Background"></a>1. Joern Background</h4><p><a target="_blank" rel="noopener" href="https://docs.joern.io/cpgql/reference-card/">https://docs.joern.io/cpgql/reference-card/</a></p>
+<h4 id="2-Joern-Generate-DDG"><a href="#2-Joern-Generate-DDG" class="headerlink" title="2. Joern Generate DDG"></a>2. Joern Generate DDG</h4><p>Method 1: generate in joern console</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">joern&gt; importCode.c.<span class="built_in">fromString</span>(<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">     | static void virtio_pci_remove(struct pci_dev *pci_dev)</span></span><br><span class="line"><span class="string">     | &#123;</span></span><br><span class="line"><span class="string">     |  struct virtio_pci_device *vp_dev = pci_get_drvdata(pci_dev);</span></span><br><span class="line"><span class="string">     |  struct device *dev = get_device(&amp;vp_dev-&gt;vdev.dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  pci_disable_sriov(pci_dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  unregister_virtio_device(&amp;vp_dev-&gt;vdev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  if (vp_dev-&gt;ioaddr)</span></span><br><span class="line"><span class="string">     |      virtio_pci_legacy_remove(vp_dev);</span></span><br><span class="line"><span class="string">     |  else</span></span><br><span class="line"><span class="string">     |      virtio_pci_modern_remove(vp_dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  pci_disable_device(pci_dev);</span></span><br><span class="line"><span class="string">     |  put_device(dev);</span></span><br><span class="line"><span class="string">     | &#125;</span></span><br><span class="line"><span class="string">     | &quot;</span><span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -943,94 +1028,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/blog/2021/05/20/PLDI-14-Compiler-Validation-via-Equivalence-Modulo-Inputs/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://harperchen.github.io/blog/2021/04/28/Tech-C-and-C++/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/8.jpg">
-      <meta itemprop="name" content="Wei CHEN">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wei's Blog">
-      <meta itemprop="description" content="Be Brave; Be Confident; <br> Be Happy; Be Optimistic; ">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Wei's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/2021/04/28/Tech-C-and-C++/" class="post-title-link" itemprop="url">[Tech] Binary Analysis</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-28 16:06:43" itemprop="dateCreated datePublished" datetime="2021-04-28T16:06:43+08:00">2021-04-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-03-27 16:19:40" itemprop="dateModified" datetime="2024-03-27T16:19:40+08:00">2024-03-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Protections Againest Exploitation</p>
-<p>ASLR:</p>
-<p>DEP: Data Execution Protection</p>
-<p>Stack Canaries:</p>
-<p>CFI: Control flow integrity</p>
-<p>ROP: Return-oriented programming</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/2021/04/28/Tech-C-and-C++/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

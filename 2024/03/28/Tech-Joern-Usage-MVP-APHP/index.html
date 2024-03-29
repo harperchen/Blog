@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"harperchen.github.io","root":"/blog/","images":"/blog/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="1. Joern Backgroundhttps:&#x2F;&#x2F;docs.joern.io&#x2F;cpgql&#x2F;reference-card&#x2F; 2. Joern Generate DDGMethod 1: generate in joern console 12345678910111213141516171819joern&gt; importCode.c.fromString(&quot;&quot;&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Tech] Joern Usage &amp; MVP &amp; APHP">
+<meta property="og:url" content="https://harperchen.github.io/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/index.html">
+<meta property="og:site_name" content="Wei&#39;s Blog">
+<meta property="og:description" content="1. Joern Backgroundhttps:&#x2F;&#x2F;docs.joern.io&#x2F;cpgql&#x2F;reference-card&#x2F; 2. Joern Generate DDGMethod 1: generate in joern console 12345678910111213141516171819joern&gt; importCode.c.fromString(&quot;&quot;&amp;quot">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://harperchen.github.io/Users/harperchen/Downloads/graphviz%20(11).svg">
+<meta property="article:published_time" content="2024-03-28T06:03:43.000Z">
+<meta property="article:modified_time" content="2024-03-29T03:04:06.284Z">
+<meta property="article:author" content="Wei CHEN">
+<meta property="article:tag" content="Static Analysis">
+<meta property="article:tag" content="Linux kernel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://harperchen.github.io/Users/harperchen/Downloads/graphviz%20(11).svg">
+
+
+<link rel="canonical" href="https://harperchen.github.io/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://harperchen.github.io/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/","path":"2024/03/28/Tech-Joern-Usage-MVP-APHP/","title":"[Tech] Joern Usage & MVP & APHP"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[Tech] Joern Usage & MVP & APHP | Wei's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wei's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Joern-Background"><span class="nav-number">1.</span> <span class="nav-text">1. Joern Background</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Joern-Generate-DDG"><span class="nav-number">2.</span> <span class="nav-text">2. Joern Generate DDG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Analyze-DDG"><span class="nav-number">3.</span> <span class="nav-text">2. Analyze DDG</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-MVP-Algorithm"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 MVP Algorithm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wei CHEN"
+      src="/blog/images/8.jpg">
+  <p class="site-author-name" itemprop="name">Wei CHEN</p>
+  <div class="site-description" itemprop="description">Be Brave; Be Confident; <br> Be Happy; Be Optimistic; </div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/harperchen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;harperchen" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:harperchen1110@gmail.com" title="E-Mail → mailto:harperchen1110@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://harperchen.github.io/blog/2024/03/28/Tech-Joern-Usage-MVP-APHP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/8.jpg">
+      <meta itemprop="name" content="Wei CHEN">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wei's Blog">
+      <meta itemprop="description" content="Be Brave; Be Confident; <br> Be Happy; Be Optimistic; ">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[Tech] Joern Usage & MVP & APHP | Wei's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [Tech] Joern Usage & MVP & APHP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-28 14:03:43" itemprop="dateCreated datePublished" datetime="2024-03-28T14:03:43+08:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-29 11:04:06" itemprop="dateModified" datetime="2024-03-29T11:04:06+08:00">2024-03-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="1-Joern-Background"><a href="#1-Joern-Background" class="headerlink" title="1. Joern Background"></a>1. Joern Background</h4><p><a target="_blank" rel="noopener" href="https://docs.joern.io/cpgql/reference-card/">https://docs.joern.io/cpgql/reference-card/</a></p>
+<h4 id="2-Joern-Generate-DDG"><a href="#2-Joern-Generate-DDG" class="headerlink" title="2. Joern Generate DDG"></a>2. Joern Generate DDG</h4><p>Method 1: generate in joern console</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">joern&gt; importCode.c.<span class="built_in">fromString</span>(<span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">     | static void virtio_pci_remove(struct pci_dev *pci_dev)</span></span><br><span class="line"><span class="string">     | &#123;</span></span><br><span class="line"><span class="string">     |  struct virtio_pci_device *vp_dev = pci_get_drvdata(pci_dev);</span></span><br><span class="line"><span class="string">     |  struct device *dev = get_device(&amp;vp_dev-&gt;vdev.dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  pci_disable_sriov(pci_dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  unregister_virtio_device(&amp;vp_dev-&gt;vdev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  if (vp_dev-&gt;ioaddr)</span></span><br><span class="line"><span class="string">     |      virtio_pci_legacy_remove(vp_dev);</span></span><br><span class="line"><span class="string">     |  else</span></span><br><span class="line"><span class="string">     |      virtio_pci_modern_remove(vp_dev);</span></span><br><span class="line"><span class="string">     |</span></span><br><span class="line"><span class="string">     |  pci_disable_device(pci_dev);</span></span><br><span class="line"><span class="string">     |  put_device(dev);</span></span><br><span class="line"><span class="string">     | &#125;</span></span><br><span class="line"><span class="string">     | &quot;</span><span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>Method 2: run the following command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source files are located under current directory</span></span><br><span class="line">➜  workspace joern-parse ./</span><br><span class="line">Parsing code at: ./ - language: `NEWC`</span><br><span class="line">[+] Running language frontend</span><br><span class="line">=======================================================================================================</span><br><span class="line">Invoking CPG generator <span class="keyword">in</span> a separate process. Note that the new process will consume additional memory.</span><br><span class="line">If you are importing a large codebase (and/or running into memory issues), please try the following:</span><br><span class="line">1) <span class="built_in">exit</span> joern</span><br><span class="line">2) invoke the frontend: /opt/joern/joern-cli/c2cpg.sh -J-Xmx30208m ./ --output cpg.bin</span><br><span class="line">3) start joern, import the cpg: `importCpg(<span class="string">&quot;path/to/cpg&quot;</span>)`</span><br><span class="line">=======================================================================================================</span><br><span class="line"></span><br><span class="line">[+] Applying default overlays</span><br><span class="line">Successfully wrote graph to: /home/weichen/workspace/cpg.bin</span><br></pre></td></tr></table></figure>
+
+<p>The above would generate a file named <code>cpg.bin</code>, then, we generate dog file to visualize the dog </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># generate ddg</span></span><br><span class="line">➜  workspace joern-export --out out-ddg --repr ddg /home/weichen/workspace/cpg.bin</span><br><span class="line"><span class="comment"># generate pdg</span></span><br><span class="line">➜  workspace joern-export --out out-pdg --repr pdg /home/weichen/workspace/cpg.bin</span><br></pre></td></tr></table></figure>
+
+<p>The generated dot files are under directory <code>out-ddg</code>, we check it and found <code>out-ddg/1-ddg.dot</code> is the one we want. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dot -Tpng -o test.png out-ddg/1-ddg.dot</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Analyze-DDG"><a href="#2-Analyze-DDG" class="headerlink" title="2. Analyze DDG"></a>2. Analyze DDG</h4><p>There is a null ptr dereference inside the function to be analyzed.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">int</span> <span class="title">mvebu_uart_probe</span><span class="params">(<span class="keyword">struct</span> platform_device *pdev)</span> </span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="keyword">struct</span> <span class="title class_">of_device_id</span> *match = <span class="built_in">of_match_device</span>(mvebu_uart_of_match,</span><br><span class="line">							   &amp;pdev-&gt;dev);</span><br><span class="line">	...</span><br><span class="line">  mvuart-&gt;data = (<span class="keyword">struct</span> mvebu_uart_driver_data *)match-&gt;data;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In line 2, <code>match</code> is returned from function <code>of_match_device</code>, without verifying whether <code>match</code> is NULL, and instead directly dereference it in line 5 would cause NPD.</p>
+<h5 id="2-1-MVP-Algorithm"><a href="#2-1-MVP-Algorithm" class="headerlink" title="2.1 MVP Algorithm"></a>2.1 MVP Algorithm</h5><p>The input of MVP is a security patches. For instance, to fix the above NPD, the <a target="_blank" rel="noopener" href="https://github.com/torvalds/linux/commit/32f47179833b63de72427131169809065db6745e">patch</a> adds the check from line 14 to line 15.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">int</span> <span class="title">mvebu_uart_probe</span><span class="params">(<span class="keyword">struct</span> platform_device *pdev)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">resource</span> *reg = <span class="built_in">platform_get_resource</span>(pdev, IORESOURCE_MEM, <span class="number">0</span>);</span><br><span class="line">	<span class="type">const</span> <span class="keyword">struct</span> <span class="title class_">of_device_id</span> *match = <span class="built_in">of_match_device</span>(mvebu_uart_of_match,</span><br><span class="line">							   &amp;pdev-&gt;dev);</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">uart_port</span> *port;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">mvebu_uart</span> *mvuart;</span><br><span class="line">	<span class="type">int</span> ret, id, irq;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!reg) &#123;</span><br><span class="line">		<span class="built_in">dev_err</span>(&amp;pdev-&gt;dev, <span class="string">&quot;no registers defined\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> -EINVAL;</span><br><span class="line">	&#125;</span><br><span class="line">+ <span class="keyword">if</span> (!match)</span><br><span class="line">+   <span class="keyword">return</span> -ENODEV;  </span><br><span class="line">  </span><br><span class="line">	<span class="comment">/* Assume that all UART ports have a DT alias or none has */</span></span><br><span class="line">	id = <span class="built_in">of_alias_get_id</span>(pdev-&gt;dev.of_node, <span class="string">&quot;serial&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (!pdev-&gt;dev.of_node || id &lt; <span class="number">0</span>)</span><br><span class="line">		pdev-&gt;id = uart_num_counter++;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		pdev-&gt;id = id;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (pdev-&gt;id &gt;= MVEBU_NR_UARTS) &#123;</span><br><span class="line">		<span class="built_in">dev_err</span>(&amp;pdev-&gt;dev, <span class="string">&quot;cannot have more than %d UART ports\n&quot;</span>,</span><br><span class="line">			MVEBU_NR_UARTS);</span><br><span class="line">		<span class="keyword">return</span> -EINVAL;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	port = &amp;mvebu_uart_ports[pdev-&gt;id];</span><br><span class="line"></span><br><span class="line">	<span class="built_in">spin_lock_init</span>(&amp;port-&gt;lock);</span><br><span class="line"></span><br><span class="line">	port-&gt;dev        = &amp;pdev-&gt;dev;</span><br><span class="line">	port-&gt;type       = PORT_MVEBU;</span><br><span class="line">	port-&gt;ops        = &amp;mvebu_uart_ops;</span><br><span class="line">	port-&gt;regshift   = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	port-&gt;fifosize   = <span class="number">32</span>;</span><br><span class="line">	port-&gt;iotype     = UPIO_MEM32;</span><br><span class="line">	port-&gt;flags      = UPF_FIXED_PORT;</span><br><span class="line">	port-&gt;line       = pdev-&gt;id;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * IRQ number is not stored in this structure because we may have two of</span></span><br><span class="line"><span class="comment">	 * them per port (RX and TX). Instead, use the driver UART structure</span></span><br><span class="line"><span class="comment">	 * array so called -&gt;irq[].</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	port-&gt;irq        = <span class="number">0</span>;</span><br><span class="line">	port-&gt;irqflags   = <span class="number">0</span>;</span><br><span class="line">	port-&gt;mapbase    = reg-&gt;start;</span><br><span class="line"></span><br><span class="line">	port-&gt;membase = <span class="built_in">devm_ioremap_resource</span>(&amp;pdev-&gt;dev, reg);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">IS_ERR</span>(port-&gt;membase))</span><br><span class="line">		<span class="keyword">return</span> -<span class="built_in">PTR_ERR</span>(port-&gt;membase);</span><br><span class="line"></span><br><span class="line">	mvuart = <span class="built_in">devm_kzalloc</span>(&amp;pdev-&gt;dev, <span class="built_in">sizeof</span>(<span class="keyword">struct</span> mvebu_uart),</span><br><span class="line">			      GFP_KERNEL);</span><br><span class="line">	<span class="keyword">if</span> (!mvuart)</span><br><span class="line">		<span class="keyword">return</span> -ENOMEM;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Get controller data depending on the compatible string */</span></span><br><span class="line">	mvuart-&gt;data = (<span class="keyword">struct</span> mvebu_uart_driver_data *)match-&gt;data;</span><br><span class="line">	mvuart-&gt;port = port;</span><br><span class="line"></span><br><span class="line">	port-&gt;private_data = mvuart;</span><br><span class="line">	<span class="built_in">platform_set_drvdata</span>(pdev, mvuart);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Get fixed clock frequency */</span></span><br><span class="line">	mvuart-&gt;clk = <span class="built_in">devm_clk_get</span>(&amp;pdev-&gt;dev, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">IS_ERR</span>(mvuart-&gt;clk)) &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">PTR_ERR</span>(mvuart-&gt;clk) == -EPROBE_DEFER)</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">PTR_ERR</span>(mvuart-&gt;clk);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">IS_EXTENDED</span>(port)) &#123;</span><br><span class="line">			<span class="built_in">dev_err</span>(&amp;pdev-&gt;dev, <span class="string">&quot;unable to get UART clock\n&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">PTR_ERR</span>(mvuart-&gt;clk);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="built_in">clk_prepare_enable</span>(mvuart-&gt;clk))</span><br><span class="line">			port-&gt;uartclk = <span class="built_in">clk_get_rate</span>(mvuart-&gt;clk);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Manage interrupts */</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">platform_irq_count</span>(pdev) == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="comment">/* Old bindings: no name on the single unamed UART0 IRQ */</span></span><br><span class="line">		irq = <span class="built_in">platform_get_irq</span>(pdev, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span> (irq &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">dev_err</span>(&amp;pdev-&gt;dev, <span class="string">&quot;unable to get UART IRQ\n&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> irq;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		mvuart-&gt;irq[UART_IRQ_SUM] = irq;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * New bindings: named interrupts (RX, TX) for both UARTS,</span></span><br><span class="line"><span class="comment">		 * only make use of uart-rx and uart-tx interrupts, do not use</span></span><br><span class="line"><span class="comment">		 * uart-sum of UART0 port.</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		irq = <span class="built_in">platform_get_irq_byname</span>(pdev, <span class="string">&quot;uart-rx&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (irq &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">dev_err</span>(&amp;pdev-&gt;dev, <span class="string">&quot;unable to get &#x27;uart-rx&#x27; IRQ\n&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> irq;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		mvuart-&gt;irq[UART_RX_IRQ] = irq;</span><br><span class="line"></span><br><span class="line">		irq = <span class="built_in">platform_get_irq_byname</span>(pdev, <span class="string">&quot;uart-tx&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (irq &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="built_in">dev_err</span>(&amp;pdev-&gt;dev, <span class="string">&quot;unable to get &#x27;uart-tx&#x27; IRQ\n&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> irq;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		mvuart-&gt;irq[UART_TX_IRQ] = irq;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* UART Soft Reset*/</span></span><br><span class="line">	<span class="built_in">writel</span>(CTRL_SOFT_RST, port-&gt;membase + <span class="built_in">UART_CTRL</span>(port));</span><br><span class="line">	<span class="built_in">udelay</span>(<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">writel</span>(<span class="number">0</span>, port-&gt;membase + <span class="built_in">UART_CTRL</span>(port));</span><br><span class="line"></span><br><span class="line">	ret = <span class="built_in">uart_add_one_port</span>(&amp;mvebu_uart_driver, port);</span><br><span class="line">	<span class="keyword">if</span> (ret)</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Step 1:</strong> MVP first analyzes the patch and extracts four variables as shown below and $f_{v}$ and $p_v$ are vulnerable and patched function.<br>$$<br>S_{del}:&amp; \texttt{set of deleted statements} \<br>S_{add}:&amp; \texttt{set of added statements} \<br>S_{vul}:&amp; \texttt{all statements in vulnerable functions} \<br>S_{pat}:&amp; \texttt{all statements in patched functions}<br>$$</p>
+<p>Thus, for the patch above, $S_{add} &#x3D; {s_{14}, s_{15}}$, $S_{del} &#x3D; {}$.</p>
+<p><strong>Step 2</strong>: MVP takes statements in $S_{add}$ and $S_{del}$ as slicing criterion and perform forward and backward slicing of PDF of patched function $p_{v}$ and vulnerable function $f_v$ to capture the <strong>data and control dependencies.</strong> </p>
+<ol>
+<li>Backward slicing is normal, just includes all data dependence and control dependence</li>
+</ol>
+<p><strong>Example.</strong> By taking $s_{15}$ as slicing criterion, the result of backward slicing is {$s_{3}$ (ctrl), $s_4$ (data), $s_{10}$​ (ctrl)}</p>
+<ol start="2">
+<li>Forward slicing is customized, otherwise too many statements would be involved if the added statements are <code>if</code> conditions.<ol>
+<li>Assignment is included</li>
+<li>Return statements will not be forward sliced </li>
+<li>For function call and conditional statement, first backward on data dependence then forward</li>
+</ol>
+</li>
+</ol>
+<p><strong>Example.</strong> First, $s_{15}$ is return statement. Thus we do not perform forward slicing. Second, to handle the conditional statement in $s_{14}$, we first conduct backward slicing on data dependencies and obtain $s_4$. Then we set $s_4$ as slicing criterion, and conduct forward slicing on data dependence. The results include ${s_{63}, s_{66}, s_{67}, s_{75}, s_{118}, s_{120}, s_{122}, s_{123}}$​.</p>
+<p>For reference, this is the selected PDG for function after patch.</p>
+<p>![graphviz (10)](&#x2F;Users&#x2F;harperchen&#x2F;Downloads&#x2F;graphviz (10).svg)</p>
+<p>For reference, this is the selected PDG for function before patch.</p>
+<img src="/Users/harperchen/Downloads/graphviz (11).svg" height="75%" width="75%">
+
+
+
+<blockquote>
+<p>[!IMPORTANT]</p>
+<ul>
+<li>Joern does not distinguish <code>a</code> and <code>a-&gt;b</code>, any statement that may be affected will be considered as data dependence related one.</li>
+</ul>
+</blockquote>
+<p><strong>Step 3:</strong> MVP puts the slicing results into $S^{sem}<em>{del}$ and $S</em>{add}^{sem}$, making it as semantically-related statements of all changed statements in changed function of security patch.</p>
+<p><strong>Example.</strong> Since no deleted statements in the current patch. $S_{del}^{sem}$ is ${}$ while $S^{sem}<em>{add} &#x3D; {s_3, s_4, s</em>{10}, s_{14}, s_{63}, s_{66}, s_{67}, s_{75}, s_{118}, s_{120}, s_{122}, s_{123}}$ contains so many noises incurred during forward slicing.</p>
+<p><strong>Step 4:</strong> MVP computes the vulnerability signature and patch signature is generated below:</p>
+<ul>
+<li><p>$V_{syn} &#x3D; S^{sem}<em>{del} \cup (S</em>{vul} \cap S_{add}^{sem})$: vulnerability syntax signature </p>
+</li>
+<li><p>$V_{sem} &#x3D; {(s_1, s_2, \texttt{type}) | s_1, s_2 \in V_{syn}}$</p>
+</li>
+<li><p>$P_{syn} &#x3D; S^{sem}<em>{add} \setminus S</em>{vul}$  statements that only exist in patched function $p_{v}$</p>
+</li>
+<li><p>$P_{sem} &#x3D; {(s_1, s_2, \texttt{type}) | s_1, s_2 \in S^{sem}<em>{add}} \setminus {(s_1, s_2, \texttt{type}) | s_1, s_2 \in S</em>{vul}} $ data or control dependencies between two statements that only exist in patched function</p>
+</li>
+</ul>
+<p>Although the above formula looks quite complicate, but you should notice that</p>
+<ul>
+<li>$V_{syn} \cup P_{syn} &#x3D; S^{sem}<em>{del} \cup S</em>{add}^{sem}$​</li>
+</ul>
+<p>To more noise in case $V_{syn}$ is too large, MVP iteratively remove from $V_{syn}$ which are farthest from the slicing criterion on PDG.</p>
+<p><strong>Example.</strong> </p>
+<ul>
+<li>$V_{syn} &#x3D; {s_3, s_4, s_{10}, s_{63}, s_{66}, s_{67}, s_{75}, s_{118}, s_{120}, s_{122}, s_{123}}$​ </li>
+<li>$V_{sem} &#x3D; {(s_3, s_{10}, \texttt{data}), (s_{10}, s_{63}, \texttt{ctrl}), (s_4, s_{63}, \texttt{data}), …}$</li>
+<li>$P_{syn} &#x3D; {s_{14}} $​</li>
+<li>$P_{sem} &#x3D; {}$</li>
+</ul>
+<p><strong>Step 5</strong>: Apply abstraction, normalization and hashing procedure</p>
+<ul>
+<li>Formal parameters &#x3D;&gt; PARAM</li>
+<li>Local variables &#x3D;&gt; VARIABLE</li>
+<li>String &#x3D;&gt; STRING</li>
+</ul>
+<p><strong>Step 6</strong>: Determine whether a target function is vulnerable based on the principle that its signature matches the vulnerability signature but does not match patch signature. </p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.joern.io/export/">https://docs.joern.io/export/</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Static-Analysis/" rel="tag"># Static Analysis</a>
+              <a href="/blog/tags/Linux-kernel/" rel="tag"># Linux kernel</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2024/03/27/USENIX-22-Drifuzz-Harvesting-Bugs-in-Device-Drivers-from-Golden-Seeds/" rel="prev" title="[USENIX'22] Drifuzz: Harvesting Bugs in Device Drivers from Golden Seeds ">
+                  <i class="fa fa-angle-left"></i> [USENIX'22] Drifuzz: Harvesting Bugs in Device Drivers from Golden Seeds 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Wei CHEN</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
